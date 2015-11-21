@@ -1,0 +1,8 @@
+*
+!.gitignore
+!init.el
+!inits/
+!inits/keybinding.el
+!inits/mail.el
+!inits/mysql.el
+!inits/proxy.el
