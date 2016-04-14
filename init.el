@@ -1,16 +1,66 @@
 ;;; Code:
 
+(setq load-path
+      (append '("~/.emacs.d/inits/") 
+			  load-path))
+
 ;;(exec-path-from-shell-initialize)
 
-(setq load-path
-      (append '(
-		"~/.emacs.d/inits/"
-		) load-path))
 
-(load "keybinding")
+;; shell pass
+(add-hook 'comint-output-filter-functions
+		  'comint-watch-for-password-prompt)
 
 
-;; use-package
+;-------------------
+;   Editor looks
+;-------------------
+
+;; ---------- title ----------
+(setq frame-title-format
+      (if (buffer-file-name)
+          (format "emacs - %%f")
+        (format "emacs - %%b")))
+
+
+;; ---------- no bars  ----------
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+
+
+;; ----------  cursor ----------
+(set-cursor-color "orange")
+(setq cursor-type 'box)
+(add-to-list 'default-frame-alist '(cursor-type . 'box))
+(setq blink-cursor-interval 0.65)
+(setq blink-cursor-delay 1.3)
+(blink-cursor-mode 1)
+
+(global-hl-line-mode t)    ; highlight current line
+;(custom-set-faces '(hl-line ((t (:background "color-236")))) )
+(show-paren-mode t)        ; enphasis paren set
+
+
+;; ---------- font ----------
+;; (set-face-attribute 'default nil :family "Ricty" :height 120)
+;; (set-fontset-font (frame-parameter nil 'font)
+;;                   'japanese-jisx0208
+;;                   (font-spec :family "Ricty"))
+;; (add-to-list 'face-font-rescale-alist
+             ;; '(".*Ricty.*" . 1))
+
+
+(add-to-list 'default-frame-alist '(font . "ricty-12"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(fixed-pitch ((t (:family "Ricty"))))
+ '(variable-pitch ((t (:family "Ricty")))))
+
+;; ---------- use-package ----------
 (unless (require 'use-package nil t)
   (message "Use-package is not available")
   (defmacro use-package (&rest args))
@@ -27,11 +77,12 @@
 (setq make-backup-files t)
 (setq backup-directory-alist
 	  (cons
-	   (cons "\\.*$" (expand-file-name "~/bak"))
+	   (cons "\\.*$" (expand-file-name "~/.bak/emacs/backup/"))
 	   backup-directory-alist)
 	  )
 
-
+(setq auto-save-file-name-transforms
+	  `((".*", (expand-file-name "~/.bak/emacs/autosave/") t)))
 
 ;; background transparent
 ;(add-to-list 'default-frame-alist '(alpha . (0.75 0.75)))
@@ -45,11 +96,38 @@
 	  ))
 
 
-;; syntax coloring
+;; mode-setting
 (add-to-list 'auto-mode-alist '("\\.jsp\\'"  . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ll\\'"   . bison-mode))
 (add-to-list 'auto-mode-alist '("\\.yy.c\\'" . bison-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh\\'"  . shell-script-mode))
+
+(add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
+
+
+;; tmp perl
+
+(require 'cperl-mode)
+(setq cperl-indent-level 4
+	  cperl-continued-statement-offset 4
+	  cperl-close-paren-offset -4
+	  cperl-label-offset -4
+	  cperl-comment-column 40
+	  cperl-highlight-variables-indiscriminately t
+	  cperl-indent-parens-as-block t
+	  cperl-tab-always-indent nil
+	  cperl-font-lock t
+	  cperl-set-style "PerlStyle"
+	  )
+
+(add-hook 'cperl-mode-hook
+		  '(lambda ()
+			 (progn
+			   (setq indent-tabs-mode nil)
+			   (setq tab-width 4))))
+
 
 
 ;; server start for emacs-client
@@ -77,39 +155,38 @@
    (setq exec-path (append (list dir) exec-path))))
 
 
-;-------------------
-;  Editor looks
-;-------------------
-
-;; hide menubar, toolbar, and scrollbar
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
-
-;(load-theme 'manoj-dark t) ; color-theme
-(setq cursor-type 'box)
-(add-to-list 'default-frame-alist '(cursor-type . 'box))
-;(set-cursor-color 'indianred)
-
-(blink-cursor-mode 0)      ; no blinking
-(global-hl-line-mode t)    ; highlight current line
-;(custom-set-faces '(hl-line ((t (:background "color-236")))) )
-(line-number-mode t)       ; display column number
-(show-paren-mode t)        ; enphasis paren set
 
 ;------------------
 ;     indent
 ;------------------
+(setq tab-width 4)
+
 (setq-default c-basic-offset 4
               tab-width 4
               indent-tab-mode t)
 
-(add-hook 'c++-mode-hook '(lambda()	(c-set-style "bsd")))
-(add-hook 'c--mode-hook '(lambda() (c-set-style "bsd")))
-;(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+(add-hook 'c++-mode-hook
+		  '(lambda()
+			 (c-set-style "bsd")
+			 (setq c-basic-offset 4)
+             (setq tab-width c-basic-offset)
+			 (setq indent-tabs-mode t)
+			 ))
+(add-hook 'c-mode-hook
+		  '(lambda()
+			 (c-set-style "bsd")
+			 (setq c-basic-offset 4)
+             (setq tab-width c-basic-offset)
+			 (setq indent-tabs-mode t)
+			 ))
+
+
+;(add-hook 'haskell-mode-hook  'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook  'turn-on-haskell-indentation)
+;(add-hook 'haskell-mode-hook  'turn-on-haskell-indent)
+;(add-hook 'haskell-mode-hook  'turn-on-haskell-simple-indent)
+
+
 
 
 ;-------------------------
@@ -136,6 +213,7 @@
 (require 'smartparens)
 (require 'rainbow-delimiters)
 
+
 ;; ---------- statusbar ----------
 (require 'powerline)
 (powerline-default-theme)
@@ -150,7 +228,10 @@
  '(anzu-mode-lighter "")
  '(anzu-search-threshold 1000)
  '(custom-safe-themes (quote ("0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default)))
- '(send-mail-function (quote smtpmail-send-it)))
+ '(org-agenda-files nil)
+ '(send-mail-function (quote smtpmail-send-it))
+ '(sql-product (quote mysql)))
+
 
 
 ;; ---------- Flycheck ----------
@@ -168,16 +249,21 @@
 ;; ---------- helm ----------
 (require 'helm-config)
 (helm-mode 1)
- ;; BS mini-buf : C-h
-(define-key helm-read-file-map (kbd "C-h") 'delete-backward-char) 
- ;; complete : TAB-key
+
+;; Backspace : C-h
+(define-key helm-map (kbd "C-h") 'delete-backward-char)
+(define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
+
+;; complete : TAB
 (define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
+
+(define-key global-map (kbd "M-x") 'helm-M-x)
+(define-key global-map (kbd "C-x b") 'helm-buffers-list)
 
 
 ;; ---------- undo-tree ----------
 (require 'undo-tree)
 (global-undo-tree-mode t)
-(global-set-key (kbd "M-/") 'undo-tree-redo)
 
 
 ;; ---------- setting in each language mode ----------
@@ -203,7 +289,6 @@
 ;; (require 'plenv)
 ;;(plenv-global "5.22.0")
 
-
 ;; (defun flymake-perl()
 ;;   (let* ((temp-file (flymake-init-create-temp-buffer-copy
 ;; 					 'flymake-create-temp-with-folder-structure))
@@ -213,18 +298,30 @@
 ;; 	(list (guess-plenv-perl-path) (list "-wc" local-file))))
 
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
 
 ;; visual regexp
 (require 'visual-regexp-steroids)
 (require 'pcre2el-autoloads)
 (setq vr/engine 'pcre2el)
 
+;; yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
 
+(require 'skk)
+
+
+(load "keybinding")
 (load "mail")
 (load "mysql")
+(load "org-mode")
+(load "save-visited-files")
+(load "twittering")
+(load "ditaa")
+(load "skk-setting")
+(load "tex")
+(load "lookup")
+(load "processing")
+
+;; dummy line

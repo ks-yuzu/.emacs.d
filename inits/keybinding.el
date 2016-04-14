@@ -26,3 +26,42 @@
 (global-set-key "\C-@\C-c" 'clipboard-kill-ring-save)
 (global-set-key "\C-@\C-v" 'clipboard-yank)
 (global-set-key "\C-@\C-x" 'clipboard-kill-region)
+
+
+;; buffer
+(defun asterisked? (buf-name)
+  (= 42 (car (string-to-list buf-name))))
+
+(defun move-to-scratch ()
+  (interactive)
+  (let ((current-buffer-name (buffer-name)))
+    (next-buffer)
+    (while (and (not (string= "*scratch*" (buffer-name)))
+                (not (string= current-buffer-name (buffer-name))))
+      (next-buffer))))
+
+(defun next-buffer-with-skip* ()
+  (interactive)
+  (let ((current-buffer-name (buffer-name)))
+    (next-buffer)
+    (while (and (asterisked? (buffer-name))
+                (not (string= current-buffer-name (buffer-name))))
+      (next-buffer))))
+
+(defun previous-buffer-with-skip* ()
+  (interactive)
+  (let ((current-buffer-name (buffer-name)))
+    (previous-buffer)
+    (while (and (asterisked? (buffer-name))
+                (not (string= current-buffer-name (buffer-name))))
+      (previous-buffer))))
+
+(global-set-key (kbd "C-,")  'previous-buffer-with-skip*)
+(global-set-key (kbd "C-.")  'next-buffer-with-skip*)
+
+;; undo tree 
+;(global-set-key (kbd "M-/") 'undo-tree-redo)
+
+;; helm
+(global-set-key "\M-y" 'helm-show-kill-ring)
+
