@@ -43,22 +43,27 @@
 
 
 ;; ---------- font ----------
-;; (set-face-attribute 'default nil :family "Ricty" :height 120)
-;; (set-fontset-font (frame-parameter nil 'font)
-;;                   'japanese-jisx0208
-;;                   (font-spec :family "Ricty"))
+(set-face-attribute 'default nil :family "Ricty" :height 120)
+(set-fontset-font (frame-parameter nil 'font)
+                  'japanese-jisx0208
+                  (font-spec :family "Ricty"))
 ;; (add-to-list 'face-font-rescale-alist
              ;; '(".*Ricty.*" . 1))
 
 
-(add-to-list 'default-frame-alist '(font . "ricty-12"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(fixed-pitch ((t (:family "Ricty"))))
- '(variable-pitch ((t (:family "Ricty")))))
+;; (add-to-list 'default-frame-alist '(font . "ricty-12"))
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(fixed-pitch ((t (:family "Ricty"))))
+;;  '(variable-pitch ((t (:family "Ricty")))))
+
+
+
+(load "keybinding")
+
 
 ;; ---------- use-package ----------
 (unless (require 'use-package nil t)
@@ -160,6 +165,7 @@
 ;     indent
 ;------------------
 (setq tab-width 4)
+(setq-default tab-width 4 indent-tabs-mode nil)
 
 (setq-default c-basic-offset 4
               tab-width 4
@@ -230,7 +236,8 @@
  '(custom-safe-themes (quote ("0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default)))
  '(org-agenda-files nil)
  '(send-mail-function (quote smtpmail-send-it))
- '(sql-product (quote mysql)))
+ '(sql-product (quote mysql))
+ '(tab-width 4))
 
 
 
@@ -240,10 +247,10 @@
 
 
 ;; ---------- Flymake ----------
-;(require 'flymake)
-;(setq flymake-gui-warnings-enabled nil)
-;(add-hook 'find-file-hook 'flymake-find-file-hook)
-;(global-set-key "\C-cd" 'flymake-display-err-mune-for-current-line)
+(require 'flymake)
+(setq flymake-gui-warnings-enabled nil)
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+(global-set-key "\C-cd" 'flymake-display-err-mune-for-current-line)
 
 
 ;; ---------- helm ----------
@@ -255,9 +262,11 @@
 (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
 
 ;; complete : TAB
-(define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
+; (define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
+(define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
 
 (define-key global-map (kbd "M-x") 'helm-M-x)
+(define-key global-map (kbd "C-x C-f") 'helm-find-files)
 (define-key global-map (kbd "C-x b") 'helm-buffers-list)
 
 
@@ -300,10 +309,10 @@
 
 
 
-;; visual regexp
-(require 'visual-regexp-steroids)
-(require 'pcre2el-autoloads)
-(setq vr/engine 'pcre2el)
+;; ;; visual regexp
+;; (require 'visual-regexp-steroids)
+;; (require 'pcre2el-autoloads)
+;; (setq vr/engine 'pcre2el)
 
 ;; yasnippet
 (require 'yasnippet)
@@ -312,16 +321,15 @@
 (require 'skk)
 
 
-(load "keybinding")
-(load "mail")
-(load "mysql")
-(load "org-mode")
-(load "save-visited-files")
-(load "twittering")
-(load "ditaa")
-(load "skk-setting")
-(load "tex")
-(load "lookup")
-(load "processing")
+;; (load "mail")
+;; (load "mysql")
+(load-file "~/.emacs.d/inits/org-mode.el")
+;; (load "save-visited-files")
+(load-file "~/.emacs.d/inits/twittering.el")
+;; (load "ditaa")
+(load-file "~/.emacs.d/inits/skk-setting.el")
+(load-file "~/.emacs.d/inits/tex.el")
+;; (load "lookup")
+;; (load "processing")
 
 ;; dummy line
