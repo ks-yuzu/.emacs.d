@@ -1,5 +1,6 @@
 ;;; Code:
 
+
 (setq load-path
       (append '("~/.emacs.d/inits/") 
 			  load-path))
@@ -320,6 +321,8 @@
 
 (require 'skk)
 
+(add-to-list 'auto-mode-alist '("\\.puml\\'" . puml-mode))
+(add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode))
 
 ;; (load "mail")
 ;; (load "mysql")
@@ -330,6 +333,7 @@
 (load-file "~/.emacs.d/inits/skk-setting.el")
 (load-file "~/.emacs.d/inits/tex.el")
 ;; (load "lookup")
-;; (load "processing")
+(load "processing")
+(load-file "~/.emacs.d/others/141120042304.eww-weblio.el")
 
 ;; dummy line
