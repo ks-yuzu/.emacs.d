@@ -2,7 +2,6 @@
 !.gitignore
 !init.el
 !inits/
-!inits/keybinding.el
-!inits/mail.el
-!inits/mysql.el
-!inits/proxy.el
+!inits/*
+!org-8.3.4
+!org-8.3.4/*
