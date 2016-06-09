@@ -2,11 +2,12 @@
 
 
 (setq load-path
-      (append '("~/.emacs.d/inits/") 
+      (append '("~/.emacs.d/inits/")
+              '("~/.emacs.d/org-8.3.4/lisp")
+              '("~/.emacs.d/org-8.3.4/contlib/lisp")
 			  load-path))
 
 ;;(exec-path-from-shell-initialize)
-
 
 ;; shell pass
 (add-hook 'comint-output-filter-functions
@@ -77,7 +78,7 @@
 (setq inhibit-startup-message t)
 
 ;; delete auto save files when finishing
-(setq delete-auto-save-files t)
+;(setq delete-auto-save-files t)
 
 ;; make backup-file in ~/bak
 (setq make-backup-files t)
@@ -177,14 +178,16 @@
 			 (c-set-style "bsd")
 			 (setq c-basic-offset 4)
              (setq tab-width c-basic-offset)
-			 (setq indent-tabs-mode t)
+			 (setq indent-tabs-mode nil)
 			 ))
 (add-hook 'c-mode-hook
 		  '(lambda()
 			 (c-set-style "bsd")
 			 (setq c-basic-offset 4)
              (setq tab-width c-basic-offset)
-			 (setq indent-tabs-mode t)
+			 (setq indent-tabs-mode nil)
+             (setq comment-start "//")
+             (setq comment-end "")
 			 ))
 
 
@@ -234,8 +237,13 @@
  '(anzu-deactivate-region t)
  '(anzu-mode-lighter "")
  '(anzu-search-threshold 1000)
- '(custom-safe-themes (quote ("0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default)))
+ '(custom-safe-themes
+   (quote
+    ("0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default)))
  '(org-agenda-files nil)
+ '(package-selected-packages
+   (quote
+    (zenburn-theme xah-lookup websocket web-mode wanderlust visual-regexp-steroids use-package undo-tree twittering-mode sublime-themes sql-indent solarized-theme smartparens save-visited-files rainbow-delimiters puml-mode processing-snippets processing-mode powerline popup-complete plenv plantuml-mode phoenix-dark-mono-theme pcre2el org-ac markdown-mode+ helm-firefox ghci-completion ghc-imported-from ghc foreign-regexp flymake flycheck-pos-tip flycheck-haskell flycheck-color-mode-line exec-path-from-shell eww-lnum dic-lookup-w3m ddskk csv-mode bison-mode auto-complete-c-headers anzu)))
  '(send-mail-function (quote smtpmail-send-it))
  '(sql-product (quote mysql))
  '(tab-width 4))
@@ -334,6 +342,13 @@
 (load-file "~/.emacs.d/inits/tex.el")
 ;; (load "lookup")
 (load "processing")
+(load "verilog")
 (load-file "~/.emacs.d/others/141120042304.eww-weblio.el")
 
 ;; dummy line
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
