@@ -22,10 +22,10 @@
 (global-set-key "\C-h" 'delete-backward-char)
 (global-set-key "\M-h" 'backward-kill-word)
 
-(global-unset-key "\C-@")
-(global-set-key "\C-@\C-c" 'clipboard-kill-ring-save)
-(global-set-key "\C-@\C-v" 'clipboard-yank)
-(global-set-key "\C-@\C-x" 'clipboard-kill-region)
+;; (global-unset-key "\C-@")
+;; (global-set-key "\C-@\C-c" 'clipboard-kill-ring-save)
+;; (global-set-key "\C-@\C-v" 'clipboard-yank)
+;; (global-set-key "\C-@\C-x" 'clipboard-kill-region)
 
 
 ;; buffer
