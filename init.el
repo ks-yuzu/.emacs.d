@@ -68,10 +68,10 @@
 
 
 ;; ---------- use-package ----------
-(unless (require 'use-package nil t)
-  (message "Use-package is not available")
-  (defmacro use-package (&rest args))
-)
+;; (unless (require 'use-package nil t)
+;;   (message "Use-package is not available")
+;;   (defmacro use-package (&rest args))
+;; )
 
 
 ;; no startup message
@@ -239,11 +239,13 @@
  '(anzu-search-threshold 1000)
  '(custom-safe-themes
    (quote
-    ("0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default)))
- '(org-agenda-files nil)
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default)))
+ '(org-agenda-files
+   (quote
+    ("~/works/lab/report/2016-06-17-hls-oosako.org" "~/works/tasklist/tasklist-4th.org")) t)
  '(package-selected-packages
    (quote
-    (zenburn-theme xah-lookup websocket web-mode wanderlust visual-regexp-steroids use-package undo-tree twittering-mode sublime-themes sql-indent solarized-theme smartparens save-visited-files rainbow-delimiters puml-mode processing-snippets processing-mode powerline popup-complete plenv plantuml-mode phoenix-dark-mono-theme pcre2el org-ac markdown-mode+ helm-firefox ghci-completion ghc-imported-from ghc foreign-regexp flymake flycheck-pos-tip flycheck-haskell flycheck-color-mode-line exec-path-from-shell eww-lnum dic-lookup-w3m ddskk csv-mode bison-mode auto-complete-c-headers anzu)))
+    (tldr evil gnuplot-mode helm-c-yasnippet git-commit wanderlust zenburn-theme xah-lookup websocket web-mode visual-regexp-steroids use-package undo-tree twittering-mode sublime-themes sql-indent solarized-theme smartparens save-visited-files rainbow-delimiters puml-mode processing-snippets processing-mode powerline popup-complete plenv plantuml-mode phoenix-dark-mono-theme pcre2el org-ac markdown-mode+ helm-firefox ghci-completion ghc-imported-from ghc foreign-regexp flymake flycheck-pos-tip flycheck-haskell flycheck-color-mode-line exec-path-from-shell eww-lnum dic-lookup-w3m ddskk csv-mode bison-mode auto-complete-c-headers anzu)))
  '(send-mail-function (quote smtpmail-send-it))
  '(sql-product (quote mysql))
  '(tab-width 4))
@@ -327,23 +329,33 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-(require 'skk)
+(setq yas-snippet-dirs
+      '("~/.emacs.d/mysnippets"
+        "~/.emacs.d/elpa/yasnippet-20160423.1336/snippets"))
 
+
+(autoload 'tldr "tldr" "tldr" t)
+(autoload 'evil "evil" "evil" t)
+
+;; puml-mode
 (add-to-list 'auto-mode-alist '("\\.puml\\'" . puml-mode))
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode))
 
-;; (load "mail")
-;; (load "mysql")
-(load-file "~/.emacs.d/inits/org-mode.el")
-;; (load "save-visited-files")
-(load-file "~/.emacs.d/inits/twittering.el")
-;; (load "ditaa")
-(load-file "~/.emacs.d/inits/skk-setting.el")
-(load-file "~/.emacs.d/inits/tex.el")
-;; (load "lookup")
+(load "mail")
+(load "migemo-setting")
+(load "org-mode")
+(load "git")
+(load "twittering")
+(load "skk-setting")
+(load "tex")
 (load "processing")
 (load "verilog")
 (load-file "~/.emacs.d/others/141120042304.eww-weblio.el")
+
+;; (load "lookup")
+;; (load "save-visited-files")
+;; (load "mysql")
+;; (load "ditaa")
 
 ;; dummy line
 (custom-set-faces
