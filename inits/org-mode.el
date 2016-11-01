@@ -5,6 +5,11 @@
 (setq org-latex-pdf-process
 	  '("~/bin/texcompile.sh %b.tex"))
 
+;; unbind C-, to use for moving the previous buffer
+(eval-after-load "org"
+  '(progn
+     (define-key org-mode-map (kbd "C-,") nil)
+     ))
 
 
 ;; PlantUML in Org-mode
