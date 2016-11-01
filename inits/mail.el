@@ -27,14 +27,19 @@
 ;; HTMLファイルは表示しない。
 (setq mime-setup-enable-inline-html nil)
 
+;; 大きいメッセージをフェッチする時に確認しない
+(setq elmo-message-fetch-confirm nil)
+
 ;; 大きいメッセージを送信時に分割しない
 (setq mime-edit-split-message nil)
 
-;; Wanderlust を終了する時は確認する。
+;; Wanderlust を終了する時は確認する
 (setq wl-interactive-exit t)
 
 ;; look ... left : mail-folder, right-up : mail-list, right-bottom : mail-content
 (setq wl-thread-insert-opened t)
 (setq wl-stay-folder-window t)
 
+
+(setq ssl-certificate-verification-policy 1)
 
