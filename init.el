@@ -1,10 +1,9 @@
 ;;; Code:
 
-
 (setq load-path
       (append '("~/.emacs.d/inits/")
-              '("~/.emacs.d/org-8.3.4/lisp")
-              '("~/.emacs.d/org-8.3.4/contlib/lisp")
+              ;; '("~/.emacs.d/org-8.3.4/lisp")
+              ;; '("~/.emacs.d/org-8.3.4/contlib/lisp")
 			  load-path))
 
 ;;(exec-path-from-shell-initialize)
@@ -35,11 +34,13 @@
 (set-cursor-color "orange")
 (setq cursor-type 'box)
 (add-to-list 'default-frame-alist '(cursor-type . 'box))
-(setq blink-cursor-interval 0.65)
+(setq blink-cursor-interval 0.8)
 (setq blink-cursor-delay 1.3)
 (blink-cursor-mode 1)
 
-(global-hl-line-mode t)    ; highlight current line
+
+;; ----------  highlight ----------
+;; (global-hl-line-mode t)    ; highlight current line
 ;(custom-set-faces '(hl-line ((t (:background "color-236")))) )
 (show-paren-mode t)        ; enphasis paren set
 
@@ -115,12 +116,11 @@
 
 
 ;; tmp perl
-
 (require 'cperl-mode)
-(setq cperl-indent-level 4
-	  cperl-continued-statement-offset 4
-	  cperl-close-paren-offset -4
-	  cperl-label-offset -4
+(setq cperl-indent-level 2
+	  cperl-continued-statement-offset 2
+	  cperl-close-paren-offset -2
+	  cperl-label-offset -2
 	  cperl-comment-column 40
 	  cperl-highlight-variables-indiscriminately t
 	  cperl-indent-parens-as-block t
@@ -134,7 +134,6 @@
 			 (progn
 			   (setq indent-tabs-mode nil)
 			   (setq tab-width 4))))
-
 
 
 ;; server start for emacs-client
@@ -169,27 +168,34 @@
 (setq tab-width 4)
 (setq-default tab-width 4 indent-tabs-mode nil)
 
-(setq-default c-basic-offset 4
-              tab-width 4
+(setq-default c-basic-offset 2
+              tab-width 2
               indent-tab-mode t)
 
 (add-hook 'c++-mode-hook
 		  '(lambda()
 			 (c-set-style "bsd")
-			 (setq c-basic-offset 4)
+			 (setq c-basic-offset 2)
              (setq tab-width c-basic-offset)
 			 (setq indent-tabs-mode nil)
+             (c-set-offset 'case-label '+)
+             (c-set-offset 'access-label '*)
+             (define-key c-mode-base-map (kbd "C-c c")   'compile)
+             (define-key c-mode-base-map (kbd "C-c C-c") 'quickrun)
 			 ))
 (add-hook 'c-mode-hook
 		  '(lambda()
 			 (c-set-style "bsd")
-			 (setq c-basic-offset 4)
+			 (setq c-basic-offset 2)
              (setq tab-width c-basic-offset)
 			 (setq indent-tabs-mode nil)
+             (c-set-offset 'case-label '+)
+             (c-set-offset 'access-label '*)
              (setq comment-start "//")
              (setq comment-end "")
+             (define-key c-mode-base-map (kbd "C-c c")   'compile)
+             (define-key c-mode-base-map (kbd "C-c C-c") 'quickrun)
 			 ))
-
 
 ;(add-hook 'haskell-mode-hook  'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook  'turn-on-haskell-indentation)
@@ -229,32 +235,10 @@
 (powerline-default-theme)
 
 (global-anzu-mode)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(anzu-deactivate-region t)
- '(anzu-mode-lighter "")
- '(anzu-search-threshold 1000)
- '(custom-safe-themes
-   (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default)))
- '(org-agenda-files
-   (quote
-    ("~/works/lab/report/2016-06-17-hls-oosako.org" "~/works/tasklist/tasklist-4th.org")) t)
- '(package-selected-packages
-   (quote
-    (tldr evil gnuplot-mode helm-c-yasnippet git-commit wanderlust zenburn-theme xah-lookup websocket web-mode visual-regexp-steroids use-package undo-tree twittering-mode sublime-themes sql-indent solarized-theme smartparens save-visited-files rainbow-delimiters puml-mode processing-snippets processing-mode powerline popup-complete plenv plantuml-mode phoenix-dark-mono-theme pcre2el org-ac markdown-mode+ helm-firefox ghci-completion ghc-imported-from ghc foreign-regexp flymake flycheck-pos-tip flycheck-haskell flycheck-color-mode-line exec-path-from-shell eww-lnum dic-lookup-w3m ddskk csv-mode bison-mode auto-complete-c-headers anzu)))
- '(send-mail-function (quote smtpmail-send-it))
- '(sql-product (quote mysql))
- '(tab-width 4))
-
-
 
 ;; ---------- Flycheck ----------
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(add-hook 'c++-mode-hook (lambda() (setq flycheck-gcc-language-standard "c++11")))
+(add-hook 'c++-mode-hook (lambda() (setq flycheck-gcc-language-standard "c++14")))
 
 
 ;; ---------- Flymake ----------
@@ -294,10 +278,6 @@
 		  '(lamdba() (setq markdown-command "mdown") )
 )
 
-;; perl-mode
-(autoload 'perl-mode "perl-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.pl$" . perl-mode))
-
 ;; haskell-mode
 (require 'haskell-mode)
 (autoload 'haskell-mode "haskell-mode" nil t)
@@ -305,20 +285,10 @@
 (add-to-list 'auto-mode-alist '(".xmonad" . haskell-mode))
 (add-to-list 'auto-mode-alist '(".xmobar" . haskell-mode))
 
-;; perl
-;; (require 'plenv)
-;;(plenv-global "5.22.0")
 
-;; (defun flymake-perl()
-;;   (let* ((temp-file (flymake-init-create-temp-buffer-copy
-;; 					 'flymake-create-temp-with-folder-structure))
-;; 		 (local-file (file-relative-name
-;; 					  temp-file
-;; 					  (file-name-directory buffer-file-name))))
-;; 	(list (guess-plenv-perl-path) (list "-wc" local-file))))
-
-
-
+;; web-mode
+(require 'web-mode)
+(setq web-mode-markup-indent-offset 2)
 
 ;; ;; visual regexp
 ;; (require 'visual-regexp-steroids)
@@ -327,11 +297,17 @@
 
 ;; yasnippet
 (require 'yasnippet)
-(yas-global-mode 1)
-
 (setq yas-snippet-dirs
       '("~/.emacs.d/mysnippets"
-        "~/.emacs.d/elpa/yasnippet-20160423.1336/snippets"))
+        "~/.emacs.d/elpa/yasnippet-20160801.1142/snippets"
+        ))
+
+(yas-global-mode 1)
+
+
+;; quickrun
+(global-unset-key (kbd "C-c C-c"))
+(global-set-key (kbd "C-c C-c") 'quickrun)
 
 
 (autoload 'tldr "tldr" "tldr" t)
@@ -342,7 +318,7 @@
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode))
 
 (load "mail")
-(load "migemo-setting")
+;; (load "migemo-setting")
 (load "org-mode")
 (load "git")
 (load "twittering")
@@ -350,14 +326,43 @@
 (load "tex")
 (load "processing")
 (load "verilog")
-(load-file "~/.emacs.d/others/141120042304.eww-weblio.el")
+(load "tools")
+(load "setting-highlight-symbol")
+(load "plenv-setting")
+(load "flyspell")
+(load "keybinding")                     ; reload
 
 ;; (load "lookup")
 ;; (load "save-visited-files")
 ;; (load "mysql")
 ;; (load "ditaa")
+;; (load-file "~/.emacs.d/others/141120042304.eww-weblio.el")
 
-;; dummy line
+
+
+
+;; Avoid writing 'package-selected-packages' in init.el
+(load (setq custom-file (expand-file-name "inits/custom.el" user-emacs-directory)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(anzu-deactivate-region t)
+ '(anzu-mode-lighter "")
+ '(anzu-search-threshold 1000)
+ '(custom-safe-themes
+   (quote
+    ("987b709680284a5858d5fe7e4e428463a20dfabe0a6f2a6146b3b8c7c529f08b" "3cd28471e80be3bd2657ca3f03fbb2884ab669662271794360866ab60b6cb6e6" "96998f6f11ef9f551b427b8853d947a7857ea5a578c75aa9c4e7c73fe04d10b4" "e9776d12e4ccb722a2a732c6e80423331bcb93f02e089ba2a4b02e85de1cf00e" "7f5837a7dbf54c2b7c41d94f5eb1373cf63274847d1971037faa24d7f2231eea" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" default)))
+ '(org-agenda-files
+   (quote
+    ("~/works/lab/report/2016-06-17-hls-oosako.org" "~/works/tasklist/tasklist-4th.org")))
+ '(package-selected-packages
+   (quote
+    (magit quickrun org erlang flycheck-perl6 perl6-mode highlight-symbol auto-highlight-symbol helm yasnippet helm-perldoc mozc tldr evil gnuplot-mode helm-c-yasnippet git-commit wanderlust zenburn-theme xah-lookup websocket web-mode visual-regexp-steroids use-package undo-tree twittering-mode sublime-themes sql-indent solarized-theme smartparens save-visited-files rainbow-delimiters puml-mode processing-snippets processing-mode powerline popup-complete plenv plantuml-mode phoenix-dark-mono-theme pcre2el org-ac markdown-mode+ helm-firefox ghci-completion ghc-imported-from ghc foreign-regexp flymake flycheck-pos-tip flycheck-haskell flycheck-color-mode-line exec-path-from-shell eww-lnum dic-lookup-w3m ddskk csv-mode bison-mode auto-complete-c-headers anzu)))
+ '(send-mail-function (quote smtpmail-send-it))
+ '(sql-product (quote mysql))
+ '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
