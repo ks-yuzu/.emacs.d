@@ -9,6 +9,7 @@
 (add-hook 'processing-mode-hook
           '(lambda ()
              (setq processing-mode-code-indent-offset 4)
+             (c-set-offset 'case-label '+)
 (setq tab-width 4)))
 
 
