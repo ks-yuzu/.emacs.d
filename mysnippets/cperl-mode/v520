@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: v520
+# key: v520
+# --
+use v5.20;

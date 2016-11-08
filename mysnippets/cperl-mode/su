@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: su
+# key: su
+# --
+#!/usr/bin/env perl
+use v5.24;
+use warnings;
+${1:use diagnostics;}

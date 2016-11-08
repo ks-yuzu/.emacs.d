@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: slurp
+# key: slurp
+# --
+${1:use Path::Class;
+}my ${2:@lines} = (file '${3:filename.txt}')->slurp(${4:chomp => 1});

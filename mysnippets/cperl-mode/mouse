@@ -1,0 +1,27 @@
+# -*- mode: snippet -*-
+# name: mouse
+# key: mouse
+# --
+package $1;
+
+use v5.18;
+use warnings;
+use diagnostics;
+use Carp::Assert;
+
+use Mouse;
+use Data::Dumper::Concise;
+
+
+# properties
+has 'var1' => (is => 'rw', isa => 'Str');
+has 'var2' => (is => 'rw', isa => 'Int');
+
+# methods
+sub dump {
+  my $self = shift;
+  print Dumper $self;
+}
+
+# Mouse のおまじない
+__PACKAGE__->meta->make_immutable();

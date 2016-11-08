@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: frame
+# key: frame
+# --
+#+LATEX: \begin{minipage}{\hsize}
+#+LATEX: \begin{oframed}
+$1
+#+LATEX: \end{oframed}
+#+LATEX: \end{minipage}

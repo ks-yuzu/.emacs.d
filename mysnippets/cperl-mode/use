@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: use
+# key: use
+# --
+use strict;
+use warnings;
+use diagnostics;
+use v5.10;

@@ -1,0 +1,51 @@
+# -*- mode: snippet -*-
+# name: lh
+# key: lh
+# --
+#+LATEX_HEADER: \renewcommand \maketitle{}
+
+# #+TITLE: HLS 進捗報告
+# #+AUTHOR: 情報科学科 3522 大迫 裕樹
+# #+EMAIL: yuuki.oosako@kwansei.ac.jp
+# #+DATE: \today
+#+LANGUAGE: ja
+#+OPTIONS: toc:nil timestamp:nil creator:nil f:nil ^:{}
+#+LATEX_CLASS: jsarticle
+#+LATEX_CLASS_OPTIONS: [a4paper, 10.5pt]
+#+LATEX_HEADER: \usepackage{boites}
+
+# ---------- package setting ----------
+#+LATEX_HEADER: \usepackage{txfonts}
+#+LATEX_HEADER: \usepackage{bm}
+#+LATEX_HEADER: \usepackage{boxedminipage}
+#+LATEX_HEADER: \usepackage{multicol}
+# !! #+LATEX_HEADER: \usepackage[dvipdfmx]{graphicx}
+
+# ---------- margin setting ----------
+#+LATEX_HEADER: \setlength{\topmargin}{-20mm}
+#+LATEX_HEADER: \setlength{\oddsidemargin}{-10mm}
+#+LATEX_HEADER: \setlength{\textwidth}{180mm}
+#+LATEX_HEADER: \setlength{\textheight}{260mm}
+
+
+#+BEGIN_LaTeX
+\makeatletter
+\def\section{\@startsection{section}{1}{\z@}%
+{1.75ex plus 0.5ex minus .2ex}{0.75ex plus .2ex}{\normalsize\bf}}
+\def\subsection{\@startsection{subsection}{2}{\z@}%
+{1.5ex plus 0.5ex minus .2ex}{0.5ex plus .2ex}{\normalsize\bf}}
+\def\subsection{\@startsection{subsection}{3}{\z@}%
+{1.0ex plus 0.5ex minus .2ex}{0.5ex plus .2ex}{\normalsize\bf}}
+\makeatother
+\renewcommand{\baselinestretch}{0.85}
+#+END_LaTeX
+
+#+BEGIN_LaTeX
+\begin{flushleft}
+  \textbf{${1:HLS 進捗報告}}
+\end{flushleft}
+\begin{flushright}
+  ${2:`(format-time-string "%Y-%m-%d")` (`(aref ["Sun" "Mon" "Tue" "Wed" "Thu" "Fri" "Sat"] (string-to-number (format-time-string "%w")))`)}\par
+  ${3:大迫 裕樹}
+\end{flushright}
+#+END_LaTeX

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: file
+# key: file
+# --
+use IO::File;
+my $fh = IO::File->new("< file.txt");

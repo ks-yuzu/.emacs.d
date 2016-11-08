@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dumper
+# key: dumper
+# --
+use Data::Dumper::Concise;

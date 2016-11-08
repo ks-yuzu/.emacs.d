@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: has
+# key: has
+# --
+has ${1:var} => (
+  is      => '${2:rw}',
+  isa     => '${3:Str}',
+  default => ${4:undef},
+);
