@@ -1,7 +1,6 @@
-*
-!.gitignore
-!init.el
-!inits/
-!inits/*
-!org-8.3.4
-!org-8.3.4/*
+auto-save-list
+eshell
+idlwave
+emacs-realtime-markdown-viewer-master
+emacs-visited-files
+
