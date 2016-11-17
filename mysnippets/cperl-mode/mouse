@@ -18,10 +18,7 @@ has 'var1' => (is => 'rw', isa => 'Str');
 has 'var2' => (is => 'rw', isa => 'Int');
 
 # methods
-sub dump {
-  my $self = shift;
-  print Dumper $self;
-}
+sub dump { print Dumper shift; }
 
 # Mouse のおまじない
 __PACKAGE__->meta->make_immutable();
