@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: she
+# key: she
+# --
+#!/usr/bin/env bash
+set -euo pipefail
+  # -u         : undefined variable → \${1:-} 
+  # -e         : error (command)    → option or '|| true'
+  # -o pipefail: 
