@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: slide
+# key: slide
+# --
+#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/latest/
+#+REVEAL_MATHJAX_URL: https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+#+OPTIONS: reveal_mathjax:t
+
+#+TITLE:   ${1:(たいとる)}
+#+AUTHOR:  ${2:Yuuki Oosako}
+# #+EMAIL: ${3:yuuki.oosako@kwansei.ac.jp}
+
+#+OPTION: toc:0
+#+REVEAL_THEME: ${4:sky}${5:default}
+
+$0
+
