@@ -96,6 +96,12 @@
 	  `((".*", (expand-file-name "~/.bak/emacs/autosave/") t)))
 
 
+;; server start for emacs-client
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
+
 
 ;; =============== mode specification ===============
 (add-to-list 'auto-mode-alist '("\\.jsp\\'"  . web-mode))
@@ -132,11 +138,6 @@
 (add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
 
 
-
-;; server start for emacs-client
-(require 'server)
-(unless (server-running-p)
-  (server-start))
 
 
 ;-------------------
@@ -202,9 +203,7 @@
 
 
 
-;-------------------------
-;     package control
-;-------------------------
+;; =============== Packages ===============
 
 ;; ---------- use package ----------
 ;(use-package package : ensure package)
