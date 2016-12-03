@@ -18,6 +18,19 @@
 
 ;; =============== Editor Appearance ===============
 
+;; window
+(if window-system
+	(progn
+	  (set-background-color "Black")
+	  (set-foreground-color "LightGray")
+	  (set-cursor-color "Gray")
+	  (set-frame-parameter nil 'alpha 85)
+	  ))
+
+;; background transparency
+;; (add-to-list 'default-frame-alist '(alpha . (0.75 0.75)))
+
+
 ;; title
 (setq frame-title-format
       (if (buffer-file-name)
@@ -72,33 +85,19 @@
 ;; no startup message
 (setq inhibit-startup-message t)
 
-;; delete auto save files when finishing
-;(setq delete-auto-save-files t)
-
-;; make backup-file in ~/bak
+;; make backup files and autosave files in ~/.bak
 (setq make-backup-files t)
 (setq backup-directory-alist
 	  (cons
 	   (cons "\\.*$" (expand-file-name "~/.bak/emacs/backup/"))
-	   backup-directory-alist)
-	  )
+	   backup-directory-alist))
 
 (setq auto-save-file-name-transforms
 	  `((".*", (expand-file-name "~/.bak/emacs/autosave/") t)))
 
-;; background transparent
-;(add-to-list 'default-frame-alist '(alpha . (0.75 0.75)))
-
-(if window-system
-	(progn
-	  (set-background-color "Black")
-	  (set-foreground-color "LightGray")
-	  (set-cursor-color "Gray")
-	  (set-frame-parameter nil 'alpha 85)
-	  ))
 
 
-;; mode-setting
+;; =============== mode specification ===============
 (add-to-list 'auto-mode-alist '("\\.jsp\\'"  . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ll\\'"   . bison-mode))
 (add-to-list 'auto-mode-alist '("\\.yy.c\\'" . bison-mode))
