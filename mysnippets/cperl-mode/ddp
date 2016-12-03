@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ddp
+# key: ddp
+# --
+use DDP${1: { deparse => 1, }};$0
