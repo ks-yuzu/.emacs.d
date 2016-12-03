@@ -1,9 +1,11 @@
 ;;; Code:
 
+;; =============== PATH ===============
+
 (setq load-path
       (append '("~/.emacs.d/inits/")
-              ;; '("~/.emacs.d/org-8.3.4/lisp")
-              ;; '("~/.emacs.d/org-8.3.4/contlib/lisp")
+           ;; '("~/.emacs.d/org-8.3.4/lisp")
+           ;; '("~/.emacs.d/org-8.3.4/contlib/lisp")
 			  load-path))
 
 ;;(exec-path-from-shell-initialize)
@@ -13,24 +15,22 @@
 		  'comint-watch-for-password-prompt)
 
 
-;-------------------
-;   Editor looks
-;-------------------
 
-;; ---------- title ----------
+;; =============== Editor Appearance ===============
+
+;; title
 (setq frame-title-format
       (if (buffer-file-name)
           (format "emacs - %%f")
         (format "emacs - %%b")))
 
-
-;; ---------- no bars  ----------
+;; hide bars
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
 
-;; ----------  cursor ----------
+;; cursor
 (set-cursor-color "orange")
 (setq cursor-type 'box)
 (add-to-list 'default-frame-alist '(cursor-type . 'box))
@@ -39,13 +39,12 @@
 (blink-cursor-mode 1)
 
 
-;; ----------  highlight ----------
-;; (global-hl-line-mode t)    ; highlight current line
-;(custom-set-faces '(hl-line ((t (:background "color-236")))) )
+;; syntax highlight
 (show-paren-mode t)        ; enphasis paren set
+ ;; (global-hl-line-mode t)    ; highlight current line
+ ;; (custom-set-faces '(hl-line ((t (:background "color-236")))) )
 
-
-;; ---------- font ----------
+;; font
 (set-face-attribute 'default nil :family "Ricty" :height 120)
 (set-fontset-font (frame-parameter nil 'font)
                   'japanese-jisx0208
@@ -68,12 +67,7 @@
 (load "keybinding")
 
 
-;; ---------- use-package ----------
-;; (unless (require 'use-package nil t)
-;;   (message "Use-package is not available")
-;;   (defmacro use-package (&rest args))
-;; )
-
+;; =============== System ===============
 
 ;; no startup message
 (setq inhibit-startup-message t)
