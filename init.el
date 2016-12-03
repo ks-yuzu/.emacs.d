@@ -110,12 +110,8 @@
 (add-to-list 'auto-mode-alist '("\\.yy.c\\'" . bison-mode))
 (add-to-list 'auto-mode-alist '("\\.zsh\\'"  . shell-script-mode))
 
-(add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
 
-
-;; tmp perl
+;; perl
 (require 'cperl-mode)
 (setq cperl-indent-level 2
 	  cperl-continued-statement-offset 2
@@ -134,6 +130,14 @@
 			 (progn
 			   (setq indent-tabs-mode nil)
 			   (setq tab-width 4))))
+
+(add-to-list 'auto-mode-alist '("\\.pl\\'"   . cperl-mode))
+(add-to-list 'auto-mode-alist '("\\.pm\\'"   . cperl-mode))
+
+(add-to-list 'interpreter-mode-alist '("perl"     . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("perl5"    . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
+
 
 
 ;; server start for emacs-client
@@ -257,8 +261,9 @@
 (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
 
 ;; complete : TAB
-; (define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
-(define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
+;; (define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
+;; (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
+;; use C-i instead of this
 
 (define-key global-map (kbd "M-x") 'helm-M-x)
 (define-key global-map (kbd "C-x C-f") 'helm-find-files)
@@ -329,7 +334,7 @@
 (load "tools")
 (load "setting-highlight-symbol")
 (load "plenv-setting")
-(load "flyspell")
+;; (load "flyspell")
 (load "keybinding")                     ; reload
 
 ;; (load "lookup")
