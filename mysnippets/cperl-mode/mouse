@@ -2,23 +2,23 @@
 # name: mouse
 # key: mouse
 # --
-package $1;
-
 use v5.18;
 use warnings;
 use diagnostics;
 use Carp::Assert;
 
-use Mouse;
-use Data::Dumper::Concise;
+use DDP;
 
+package $1 {
 
-# properties
-has 'var1' => (is => 'rw', isa => 'Str');
-has 'var2' => (is => 'rw', isa => 'Int');
+  use Mouse;
 
-# methods
-sub dump { print Dumper shift; }
+  # properties
+  has ${2:var1} => (is => '${3:rw}', isa => '${4:Str}');
+  $0
 
-# Mouse のおまじない
-__PACKAGE__->meta->make_immutable();
+  # methods
+  sub dump { p shift; }
+
+  __PACKAGE__->meta->make_immutable();
+}
