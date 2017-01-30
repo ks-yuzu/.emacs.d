@@ -3,7 +3,7 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 
 (setq org-latex-pdf-process
-	  '("~/bin/texcompile.sh %b.tex"))
+	  '("~/bin/tex2pdf %b.tex"))
 
 ;; unbind C-, to use for moving the previous buffer
 (eval-after-load "org"
