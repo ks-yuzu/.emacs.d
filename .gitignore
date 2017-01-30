@@ -1,6 +1,12 @@
+elpa
 auto-save-list
+tramp
 eshell
 idlwave
 emacs-realtime-markdown-viewer-master
 emacs-visited-files
-
+.yas-compiled-snippets.el
+.org-id-locations
+tldr
+others
+url
