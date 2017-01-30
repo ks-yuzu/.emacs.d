@@ -152,11 +152,11 @@
               "/sw/bin"
               "/usr/local/bin"
               (expand-file-name "~/bin")
-              (expand-file-name "~/.emacs.d/bin")
               ))
  (when (and (file-exists-p dir) (not (member dir exec-path)))
    (setenv "PATH" (concat dir ":" (getenv "PATH")))
-   (setq exec-path (append (list dir) exec-path))))
+   (setq exec-path
+         (append (list dir) exec-path))))
 
 
 
@@ -270,10 +270,11 @@
 ;; ---------- setting in each language mode ----------
 ;; markdown mode
 (require 'markdown-mode)
-(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist
+      (cons '("\\.md" . markdown-mode)
+            auto-mode-alist))
 (add-hook 'markdown-mode-hook
-		  '(lamdba() (setq markdown-command "mdown") )
-)
+		  '(lamdba() (setq markdown-command "mdown") ))
 
 ;; haskell-mode
 (require 'haskell-mode)
@@ -311,12 +312,12 @@
 (autoload 'evil "evil" "evil" t)
 
 ;; puml-mode
-(add-to-list 'auto-mode-alist '("\\.puml\\'" . puml-mode))
+(add-to-list 'auto-mode-alist '("\\.puml\\'"     . puml-mode))
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode))
 
 (load "mail")
 ;; (load "migemo-setting")
-(load "org-mode")
+(load "setting-org-mode")
 (load "git")
 (load "twittering")
 (load "skk-setting")
