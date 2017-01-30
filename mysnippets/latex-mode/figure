@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: figure
+# key: figure
+# --
+\\begin{figure}[ht]
+  \\centering
+  \\includegraphics[scale=1]{figures/$1}
+  \\caption{$2}
+  \\label{fig::$3}
+\\end{figure}
