@@ -6,3 +6,7 @@
 use v5.24;
 use warnings;
 ${1:use diagnostics;}
+
+use utf8;
+use open IO => qw/:encoding(UTF-8) :std/;
+$0
