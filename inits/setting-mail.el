@@ -3,10 +3,23 @@
 (autoload 'wl       "wl" "Wanderlust" t)
 (autoload 'wl-draft "wl" "Write draft with Wanderlust." t)
 
-(setq user-mail-address          "dgy34707@kwansei.ac.jp")
+;; IMAP
+(setq elmo-imap4-default-server            "outlook.office365.com"
+;; (setq elmo-imap4-default-server            "webmail.kwansei.ac.jp")
+      elmo-imap4-default-user              "fwm83185@nuc.kwansei.ac.jp"
+      elmo-imap4-default-authenticate-type 'clear
+      elmo-imap4-default-port              '993
+      elmo-imap4-default-stream-type       'ssl
+
+      ;;for non ascii-characters in folder-names
+      elmo-imap4-use-modified-utf7         t)
+
+(setq user-mail-address          "fwm83185@kwansei.ac.jp")
 (setq user-full-name             "Yuuki Oosako")
 (setq smtpmail-smtp-server       "outlook.office365.com")
+;; (setq smtpmail-smtp-server       "webmail.kwansei.ac.jp")
 (setq wl-smtp-posting-server     "outlook.office365.com")
+;; (setq wl-smtp-posting-server     "webmail.kwansei.ac.jp")
 (setq mail-user-agent            "message-user-agent")
 (setq message-send-mail-function "message-smtpmail-send-it")
 
