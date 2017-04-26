@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: su
+# key: su
+# --
+#!/usr/bin/perl6
+use v6;
+use strict;
