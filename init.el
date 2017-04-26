@@ -58,7 +58,7 @@
  ;; (custom-set-faces '(hl-line ((t (:background "color-236")))) )
 
 ;; font
-(set-face-attribute 'default nil :family "Ricty" :height 120)
+(set-face-attribute 'default nil :family "Ricty" :height 135)
 (set-fontset-font (frame-parameter nil 'font)
                   'japanese-jisx0208
                   (font-spec :family "Ricty"))
@@ -315,20 +315,27 @@
 (add-to-list 'auto-mode-alist '("\\.puml\\'"     . puml-mode))
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode))
 
-(load "mail")
-;; (load "migemo-setting")
+
+(load "keybinding")                     ; reload
+(load "setting-highlight-symbol")
+;; (load "setting-mail")
+(load "setting-mail-in-kwansei")
+(load "setting-migemo")
 (load "setting-org-mode")
+(load "setting-quickrun")
 (load "git")
 (load "twittering")
-(load "skk-setting")
+(load "setting-skk")
 (load "tex")
 (load "processing")
 (load "verilog")
 (load "tools")
-(load "setting-highlight-symbol")
-(load "plenv-setting")
+
+(load "setting-reveal")
+
+
+;; (load "plenv-setting")
 ;; (load "flyspell")
-(load "keybinding")                     ; reload
 
 ;; (load "lookup")
 ;; (load "save-visited-files")
