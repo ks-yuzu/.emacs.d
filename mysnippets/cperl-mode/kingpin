@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: kingpin
+# key: kingpin
+# --
+use Getopt::Kingpin;
+
+my $kingpin = Getopt::Kingpin->new();
+my $name        = $kingpin->flag('name', 'description')->short('n')->default(1)->int;
+my $            = $kingpin->flag('', '')->short('s')->default('index')->string;
+my $            = $kingpin->flag('', '')->short('d')->bool;
+my $samples_obj = $kingpin->arg('args', ' a list of arguments')->string_list;
+
+$kingpin->parse;

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: table-header
+# key: table-header
+# --
+#+ATTR_LaTeX: :align |p{10em}|p{18em}|p{18em}|

@@ -2,5 +2,7 @@
 # name: slurp
 # key: slurp
 # --
-${1:use Path::Class;
-}my ${2:@lines} = (file '${3:filename.txt}')->slurp(${4:chomp => 1});
+${1:use Path::Tiny;
+}my ${2:$lines} = path('${3:filename.txt}')->slurp();
+
+my ${2:@lines} = path('${3:filename.txt}')->lines( ${4:{chomp => 1}} );

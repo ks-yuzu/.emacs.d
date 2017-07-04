@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: write
+# key: write
+# --
+path("${1:output.txt}")->spew(${2:@lines});
+$0
