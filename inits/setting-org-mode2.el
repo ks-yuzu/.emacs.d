@@ -25,6 +25,7 @@
  [NO-DEFAULT-PACKAGES]
  [PACKAGES]
  [EXTRA]"
+            ("\\newpage\\setcounter{section}{0}\\section*{%s}" . "\\section*{%s}")
             ("\\section{%s}" . "\\section*{%s}")
             ("\\subsection{%s}" . "\\subsection*{%s}")
             ("\\subsubsection{%s}" . "\\subsubsection*{%s}")

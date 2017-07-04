@@ -1,14 +1,19 @@
 ;;; Code:
 
 (require 'skk)
-
-(setq skk-server-host "localhost"
-	  skk-server-portnum 1178
-	  skk-server-report-response t)
-
-
 (global-set-key "\C-xj" 'skk-mode)
-(setq skk-large-jisyo "/home/yuzu/SKK-JISYO.L")
+
+
+;; 辞書の文字コード指定
+(setq skk-jisyo-code 'utf-8)
+;; 注) 個人辞書の読み書きの以外の辞書などの読み込みにも影響.
+;; - 個人辞書の文字コードを合わせる
+;; - L 辞書等の文字コードを合わせる
+
+(setq skk-large-jisyo "~/SKK-JISYO.L.utf8")
+;; (setq skk-server-host "localhost"
+;; 	  skk-server-portnum 1178
+;; 	  skk-server-report-response t)
 
 
 ;; henkan by function key
@@ -58,3 +63,12 @@
                 (vector 'henkan i) (vector (- i 32)))
     (setq i (1+ i))))
 
+
+;; context-skk
+(require 'context-skk)
+
+;; interactive abbrev
+;; (setq skk-dcomp-activate t)
+
+;; ';' マークで変換指定
+(require 'skk-hint)

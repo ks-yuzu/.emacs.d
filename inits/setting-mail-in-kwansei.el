@@ -14,13 +14,14 @@
       elmo-imap4-use-modified-utf7         t)
 
 
-
-(setq user-mail-address          "fwm83185@kwansei.ac.jp")
 (setq user-full-name             "Yuuki Oosako")
+(setq user-mail-address          "yuuki.oosako@kwansei.ac.jp")
+
 ;; (setq smtpmail-smtp-server       "outlook.office365.com")
 (setq smtpmail-smtp-server       "webmail.kwansei.ac.jp")
 ;; (setq wl-smtp-posting-server     "outlook.office365.com")
 (setq wl-smtp-posting-server     "webmail.kwansei.ac.jp")
+
 (setq mail-user-agent            "message-user-agent")
 (setq message-send-mail-function "message-smtpmail-send-it")
 
@@ -60,9 +61,8 @@
 
 ;; cache
 ;; 先読み機能を有効にするフォルダ (正規表現) リスト
-;; (setq wl-message-buffer-prefetch-folder-list
-;;       ("*"))
-      
+(setq wl-message-buffer-prefetch-folder-list
+      '("*"))
 
 ;; 先読みするメッセージのサイズをチェックしない
 (setq wl-message-buffer-prefetch-threshold nil)
@@ -70,3 +70,8 @@
 ;; Non-nil であればフォルダに移動した時に最初のメッセージを自動的に先読み
 (setq wl-auto-prefetch-first t)
 
+;; 保持するバッファの数
+(setq wl-message-buffer-cache-size 1000000)
+
+;; プリフェッチの時にサイズを確認しない
+(setq wl-prefetch-threshold nil)

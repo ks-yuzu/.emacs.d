@@ -7,3 +7,11 @@
                       :default "c++")
 
 (quickrun-set-default "c++" "c++17")
+
+(quickrun-add-command "nodejs"
+                      '((:command . "nodejs")
+                        (:exec . ("%c %s")))
+                      :default "nodejs")
+
+
+(quickrun-set-default "javascript" "nodejs")

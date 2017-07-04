@@ -1,12 +1,14 @@
 ;;; Code:
 
+
 ;; =============== PATH ===============
 
 (setq load-path
       (append '("~/.emacs.d/inits/")
-           ;; '("~/.emacs.d/org-8.3.4/lisp")
-           ;; '("~/.emacs.d/org-8.3.4/contlib/lisp")
 			  load-path))
+
+(load "keybinding")
+
 
 ;;(exec-path-from-shell-initialize)
 
@@ -17,19 +19,16 @@
 
 
 ;; =============== Editor Appearance ===============
-
 ;; window
 (if window-system
 	(progn
 	  (set-background-color "Black")
 	  (set-foreground-color "LightGray")
-	  (set-cursor-color "Gray")
-	  (set-frame-parameter nil 'alpha 85)
-	  ))
+	  (set-cursor-color     "Gray")
+	  (set-frame-parameter nil 'alpha 85)))
 
 ;; background transparency
 ;; (add-to-list 'default-frame-alist '(alpha . (0.75 0.75)))
-
 
 ;; title
 (setq frame-title-format
@@ -51,11 +50,8 @@
 (setq blink-cursor-delay 1.3)
 (blink-cursor-mode 1)
 
-
 ;; syntax highlight
 (show-paren-mode t)        ; enphasis paren set
- ;; (global-hl-line-mode t)    ; highlight current line
- ;; (custom-set-faces '(hl-line ((t (:background "color-236")))) )
 
 ;; font
 (set-face-attribute 'default nil :family "Ricty" :height 135)
@@ -75,9 +71,6 @@
 ;;  '(fixed-pitch ((t (:family "Ricty"))))
 ;;  '(variable-pitch ((t (:family "Ricty")))))
 
-
-
-(load "keybinding")
 
 
 ;; =============== System ===============
@@ -121,8 +114,7 @@
 	  cperl-indent-parens-as-block t
 	  cperl-tab-always-indent nil
 	  cperl-font-lock t
-	  cperl-set-style "PerlStyle"
-	  )
+	  cperl-set-style "PerlStyle")
 
 (add-hook 'cperl-mode-hook
 		  '(lambda ()
@@ -136,7 +128,6 @@
 (add-to-list 'interpreter-mode-alist '("perl"     . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("perl5"    . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
-
 
 
 
@@ -235,6 +226,15 @@
 ;; ---------- Flycheck ----------
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'c++-mode-hook (lambda() (setq flycheck-gcc-language-standard "c++14")))
+(add-hook 'c-mode-hook (lambda()
+                         (setq flycheck-gcc-include-path
+                               (list (expand-file-name "~/works/lab/rtos/toppers/asp3_macosx_xcode-20160515/include")
+                                     (expand-file-name "~/works/lab/rtos/toppers/asp3_macosx_xcode-20160515/target/dummy_gcc")
+                                     (expand-file-name "~/works/lab/rtos/toppers/asp3_macosx_xcode-20160515/arch/gcc")
+                                     (expand-file-name "~/works/lab/rtos/toppers/asp3_macosx_xcode-20160515/")
+                                     (expand-file-name "~/works/lab/rtos/toppers/asp3_macosx_xcode-20160515/kernel")
+                                     (expand-file-name "~/works/lab/rtos/toppers/asp3_macosx_xcode-20160515/syssvc")
+                                     (expand-file-name "~/works/lab/rtos/toppers/asp3_macosx_xcode-20160515/dummy")))))
 
 
 ;; ---------- Flymake ----------
@@ -317,24 +317,24 @@
 
 
 (load "keybinding")                     ; reload
+(load "setting-skk")
 (load "setting-highlight-symbol")
 ;; (load "setting-mail")
 (load "setting-mail-in-kwansei")
 (load "setting-migemo")
-(load "setting-org-mode")
 (load "setting-quickrun")
-(load "git")
+(load "setting-git")
 (load "twittering")
-(load "setting-skk")
-(load "tex")
-(load "processing")
 (load "verilog")
 (load "tools")
 
+;; each language
+(load "setting-org-mode")
 (load "setting-reveal")
+(load "setting-processing")
+(load "setting-tex")
 
-
-;; (load "plenv-setting")
+(load "setting-plenv")
 ;; (load "flyspell")
 
 ;; (load "lookup")

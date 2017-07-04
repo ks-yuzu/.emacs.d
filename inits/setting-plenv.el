@@ -1,9 +1,9 @@
 ;;; Code:
 
 ;; (require 'plenv) ;; for guess-plenv-perl-path
-(setenv "PLENV_VERSION" "5.24.0")
+(setenv "PLENV_VERSION" "5.24.1")
 (load-file "~/.emacs.d/inits/plenv.d/plenv.el")
-(plenv-global "5.24.0")
+(plenv-global "5.24.1")
 
 (require 'flymake)
 
