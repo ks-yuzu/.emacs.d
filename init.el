@@ -122,8 +122,9 @@
 			   (setq indent-tabs-mode nil)
 			   (setq tab-width 4))))
 
-(add-to-list 'auto-mode-alist '("\\.pl\\'"   . cperl-mode))
-(add-to-list 'auto-mode-alist '("\\.pm\\'"   . cperl-mode))
+(add-to-list 'auto-mode-alist '("\\.pl\\'"  . cperl-mode))
+(add-to-list 'auto-mode-alist '("\\.pm\\'"  . cperl-mode))
+(add-to-list 'auto-mode-alist '("\\.t\\'"   . cperl-mode))
 
 (add-to-list 'interpreter-mode-alist '("perl"     . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("perl5"    . cperl-mode))
@@ -317,6 +318,7 @@
 
 
 (load "keybinding")                     ; reload
+(load "setting-dired")
 (load "setting-skk")
 (load "setting-highlight-symbol")
 ;; (load "setting-mail")
