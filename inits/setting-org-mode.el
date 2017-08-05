@@ -3,10 +3,16 @@
 (require 'org)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
+(custom-set-variables
+ '(system-time-locale "C")
+ '(org-display-custom-times t)
+ '(org-time-stamp-formats (quote ("<%Y/%m/%d (%a)>" . "<%Y/%m/%d (%a) %H:%M>")))
+ '(org-time-stamp-custom-formats nil))
+
 ;; unbind C-, to use for moving the previous buffer
-(eval-after-load "org"
-  '(progn
-     (define-key org-mode-map (kbd "C-,") nil)))
+;; (eval-after-load "org"
+;;   '(progn
+;;      (define-key org-mode-map (kbd "C-,") nil)))
 
 ;;
 ;; export
