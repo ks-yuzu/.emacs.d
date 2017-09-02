@@ -10,7 +10,11 @@
 ;; - 個人辞書の文字コードを合わせる
 ;; - L 辞書等の文字コードを合わせる
 
-(setq skk-large-jisyo "~/SKK-JISYO.L.utf8")
+(global-set-key "\C-xj" 'skk-mode)
+(setq skk-jisyo-code 'utf-8)
+
+(setq skk-large-jisyo "/home/yuzu/.SKK-JISYO.L.utf8")
+(setq skk-jisyo       "/home/yuzu/.skk-jisyo.utf8")
 ;; (setq skk-server-host "localhost"
 ;; 	  skk-server-portnum 1178
 ;; 	  skk-server-report-response t)
