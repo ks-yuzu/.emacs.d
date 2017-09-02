@@ -8,7 +8,10 @@
 
 
 (global-set-key "\C-xj" 'skk-mode)
-(setq skk-large-jisyo "/home/yuzu/SKK-JISYO.L")
+(setq skk-jisyo-code 'utf-8)
+
+(setq skk-large-jisyo "/home/yuzu/.SKK-JISYO.L.utf8")
+(setq skk-jisyo       "/home/yuzu/.skk-jisyo.utf8")
 
 
 ;; henkan by function key
