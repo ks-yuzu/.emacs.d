@@ -15,6 +15,7 @@
 
 (setq skk-large-jisyo "/home/yuzu/.SKK-JISYO.L.utf8")
 (setq skk-jisyo       "/home/yuzu/.skk-jisyo.utf8")
+
 ;; (setq skk-server-host "localhost"
 ;; 	  skk-server-portnum 1178
 ;; 	  skk-server-report-response t)

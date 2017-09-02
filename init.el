@@ -6,10 +6,6 @@
       (append '("~/.emacs.d/inits/")
 			  load-path))
 
-(load "keybinding")
-
-;;(exec-path-from-shell-initialize)
-
 ;; shell pass
 (add-hook 'comint-output-filter-functions
           'comint-watch-for-password-prompt)
@@ -297,7 +293,7 @@
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode))
 
 
-(load "keybinding")                     ; reload
+(load "setting-keybind")                     ; reload
 (load "setting-dired")
 (load "setting-skk")
 (load "setting-highlight-symbol")
