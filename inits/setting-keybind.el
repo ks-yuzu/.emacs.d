@@ -56,8 +56,8 @@
                 (not (string= current-buffer-name (buffer-name))))
       (previous-buffer))))
 
-(global-set-key (kbd "C-,")  'previous-buffer-with-skip*)
-(global-set-key (kbd "C-.")  'next-buffer-with-skip*)
+(global-set-key (kbd "M-[")  'previous-buffer-with-skip*)
+(global-set-key (kbd "M-]")  'next-buffer-with-skip*)
 
 ;; undo tree 
 ;(global-set-key (kbd "M-/") 'undo-tree-redo)
