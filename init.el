@@ -54,7 +54,7 @@
 (load "setting-font")
 
 (if (eq system-type 'gnu/linux)
-    (load "init-linux.el"))
+    (load "init-linux") )
 
 
 ;; =============== System ===============
@@ -67,7 +67,7 @@
 (add-to-list 'backup-directory-alist         ; backup~
        (cons "\\.*$" (expand-file-name "~/.emacs.d/backup/")))
 
-(add-to-list 'auto-save-file-name-transforms ; #autosave#
+(setq auto-save-file-name-transforms ; #autosave#
        `((".*", (expand-file-name "~/.emacs.d/autosave/") t)))
 
 
@@ -175,9 +175,10 @@
 
 ;; ---------- use package ----------
 (require 'package)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/")  t)
-(add-to-list 'package-archives '("marmalade"    . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives '("org"          . "http://orgmode.org/elpa/")            t)
+;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/")  t)
+(add-to-list 'package-archives '("melpa"      . "http://melpa.milkbox.net/packages/")  t)
+(add-to-list 'package-archives '("marmalade"  . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("org"        . "http://orgmode.org/elpa/")            t)
 (package-initialize)
 
 
