@@ -346,6 +346,10 @@
 ;; (load-file "~/.emacs.d/others/141120042304.eww-weblio.el")
 
 
+(global-set-key (kbd "C-x C-c") 'helm-M-x)
+(global-set-key (kbd "C-x C-z") 'helm-M-x)
+(defalias 'exit 'save-buffers-kill-emacs)
+
 ;; Avoid writing 'package-selected-packages' in init.el
 (load
  (setq custom-file
