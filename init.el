@@ -25,7 +25,7 @@
 	  (set-background-color "Black")
 	  (set-foreground-color "LightGray")
 	  (set-cursor-color     "Gray")
-	  (set-frame-parameter nil 'alpha 85)))
+	  (set-frame-parameter nil 'alpha 100)))
 
 ;; background transparency
 ;; (add-to-list 'default-frame-alist '(alpha . (0.75 0.75)))
@@ -71,6 +71,24 @@
 ;;  '(fixed-pitch ((t (:family "Ricty"))))
 ;;  '(variable-pitch ((t (:family "Ricty")))))
 
+
+
+;; https://qiita.com/blue0513/items/6e860ba3b769bf0363a5
+;; EmacsにFocusが外れている際のFace
+(defun my-out-focused-mode-line()
+  (set-face-background 'mode-line "gray"))
+
+;; EmacsにFocusが当たっている際のFace
+(defun my-in-focused-mode-line()
+  (set-face-background 'mode-line "#FFA500"))
+
+;; Hookする
+;; (add-hook 'focus-out-hook 'my-out-focused-mode-line)
+;; (add-hook 'focus-in-hook 'my-in-focused-mode-line)
+
+
+;; mac
+(load "setting-mac")
 
 
 ;; =============== System ===============
@@ -130,6 +148,8 @@
 (add-to-list 'interpreter-mode-alist '("perl5"    . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
 
+
+(setq js-indent-level 2)
 
 
 ;-------------------
@@ -215,7 +235,7 @@
 
 ;; ---------- parens ----------
 (require 'smartparens)
-(require 'rainbow-delimiters)
+;; (require 'rainbow-delimiters)
 
 
 ;; ---------- statusbar ----------
