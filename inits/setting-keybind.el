@@ -11,6 +11,8 @@
 
 (global-set-key "\C-x\C-g" 'goto-line)
 
+(global-set-key (kbd "C-x C-j") 'dired-jump)
+
 (defun my-move-beginning-of-line ()
   (interactive)
   (if (bolp)
