@@ -2,6 +2,8 @@
 # name: lh
 # key: lh
 # --
+#+STARTUP: showall
+
 #+LATEX_HEADER: \renewcommand \maketitle{}
 
 # #+TITLE: HLS 進捗報告
@@ -28,7 +30,8 @@
 #+LATEX_HEADER: \setlength{\textheight}{260mm}
 
 
-#+BEGIN_LaTeX
+
+#+BEGIN_EXPORT latex
 \makeatletter
 \def\section{\@startsection{section}{1}{\z@}%
 {1.75ex plus 0.5ex minus .2ex}{0.75ex plus .2ex}{\normalsize\bf}}
@@ -38,9 +41,10 @@
 {1.0ex plus 0.5ex minus .2ex}{0.5ex plus .2ex}{\normalsize\bf}}
 \makeatother
 \renewcommand{\baselinestretch}{0.85}
-#+END_LaTeX
+#+END_EXPORT
 
-#+BEGIN_LaTeX
+
+#+BEGIN_EXPORT latex
 \begin{flushleft}
   \textbf{${1:HLS 進捗報告}}
 \end{flushleft}
@@ -48,4 +52,4 @@
   ${2:`(format-time-string "%Y-%m-%d")` (`(aref ["Sun" "Mon" "Tue" "Wed" "Thu" "Fri" "Sat"] (string-to-number (format-time-string "%w")))`)}\par
   ${3:大迫 裕樹}
 \end{flushright}
-#+END_LaTeX
+#+END_EXPORT

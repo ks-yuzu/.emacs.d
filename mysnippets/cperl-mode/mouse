@@ -2,23 +2,30 @@
 # name: mouse
 # key: mouse
 # --
-use v5.18;
-use warnings;
-use diagnostics;
-use Carp::Assert;
+use utf8;
+use open IO => qw/:encoding(UTF-8) :std/;
 
-use DDP;
+use Carp 'croak';
+
+use DDP {
+  colored        => 1,
+  deparse        => 1,
+  caller_info    => 1,
+  hash_separator => ' => ',
+  # class => { inherited  => 'all' }, # 'none', 'all', 'private', or 'public'.
+};
 
 package $1 {
-
   use Mouse;
 
   # properties
   has ${2:var1} => (is => '${3:rw}', isa => '${4:Str}');
-  $0
+$0
 
   # methods
-  sub dump { p shift; }
+  sub dump { DDP::p @{[shift]} }
 
   __PACKAGE__->meta->make_immutable();
 }
+
+1;

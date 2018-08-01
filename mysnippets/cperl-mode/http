@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: http
+# key: http
+# --
+use HTTP::Request;
+use LWP::UserAgent;
+
+sub _http_request {
+  my ($req) = @_;
+
+  $req->authorization_basic(ID, PW);
+  my $ua = LWP::UserAgent->new();
+  my $res = $ua->request($req);
+
+  warn $res->status_line if $res->is_error();
+
+  return $res;
+}

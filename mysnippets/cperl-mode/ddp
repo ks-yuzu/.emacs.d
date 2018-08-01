@@ -2,4 +2,11 @@
 # name: ddp
 # key: ddp
 # --
-use DDP${1: { deparse => 1, }};$0
+use DDP {
+  colored        => 1,
+  deparse        => 1,
+  caller_info    => 1,
+  hash_separator => ' => ',
+  # class => { inherited  => 'all' }, # 'none', 'all', 'private', or 'public'.
+};
+$0

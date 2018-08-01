@@ -3,7 +3,7 @@
 # key: su
 # --
 #!/usr/bin/env perl
-use v5.24;
+use v5.26;
 use warnings;
 ${1:use diagnostics;}
 

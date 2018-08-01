@@ -1,0 +1,53 @@
+# -*- mode: snippet -*-
+# name: myfunc
+# key: myfunc
+# --
+var fs = require('fs')
+
+//ファイル読み込み
+function slurp(path) {
+  try {
+    return fs.readFileSync(path, 'utf8')
+  }
+  catch(err) {
+    if(err.code === 'ENOENT') {
+      say('file "' + path + '" not found')
+      return false
+    }
+  }
+
+  return true
+}
+
+//ファイル書き込み
+function spew(path, data) {
+  fs.writeFile(path, data, function (error) {
+    if (error) { throw err }
+  });
+}
+
+
+// オプションと次の引数の連想配列を返す (仮)
+function parseOptions(args) {
+  var opts = {}
+  var optName = undefined
+
+  args.forEach(function(arg) {
+    if( optName != null ) {
+      opts[optName] = arg
+      optName = undefined
+    }
+    
+    var res = arg.match(/^--?(.*)/)
+    if( res == null ) return
+    optName = res[1]
+    opts[optName] = undefined
+  });
+
+  return opts;
+}
+
+
+function say(str) {
+  console.log(str)
+}

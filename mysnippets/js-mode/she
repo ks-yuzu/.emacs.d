@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: she
+# key: she
+# --
+#!/usr/bin/env node

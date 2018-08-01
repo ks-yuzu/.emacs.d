@@ -1,10 +1,38 @@
 # -*- mode: snippet -*-
-# name: sign
-# key: sign
+# name: listing
+# key: listing
 # --
-=====================================
-関西学院大学大学院
-理工学研究科 情報科学専攻 M1
-石浦研究室  大迫 裕樹 (Oosako Yuuki)
-e-mail : yuuki.oosako@kwansei.ac.jp
-=====================================
+${1:#+LATEX_HEADER: \usepackage{listings, jlisting}
+#+BEGIN_EXPORT latex
+\renewcommand{\lstlistingname}{}
+\lstset{%
+  language=C,%
+  breaklines=true, %
+  %% basicstyle={\footnotesize\ttfamily},%
+  basicstyle={\small\ttfamily},%
+  %% keywordstyle={\footnotesize\textbf},%
+  keywordstyle={\small\ttfamily\textbf},%
+  identifierstyle={},%
+  commentstyle={\scriptsize},%  %{\footnotesize\itshape},$
+  %% ndkeywordstyle={\small},%
+  %% stringstyle={\small\ttfamily},
+  classoffset=1,%
+  frame=single,%
+  framesep=4pt,%
+  showstringspaces=false,%
+  numbers=left,%
+  numbersep=6pt,%
+  numberstyle={\scriptsize},%
+  stepnumber=1,%  
+  lineskip=-1.0ex,%
+  xleftmargin=15pt,%
+  xrightmargin=7pt,%
+}%
+#+END_EXPORT
+}
+
+#+BEGIN_EXPORT latex
+\begin{lstlisting}
+
+\end{lstlisting}
+#+END_EXPORT
