@@ -14,10 +14,11 @@
 ;; =============== EDITOR APPEARANCE ===============
 ;; window
 (if window-system
-    (progn
-      (set-background-color "Black")
-      (set-foreground-color "LightGray")
-      (set-cursor-color "Gray")))
+	(progn
+	  (set-background-color "Black")
+	  (set-foreground-color "LightGray")
+	  (set-cursor-color     "Gray")
+	  (set-frame-parameter nil 'alpha 100)))
 
 
 ;; title
@@ -53,6 +54,24 @@
 
 (if (eq system-type 'gnu/linux)
     (load "init-linux") )
+
+
+;; https://qiita.com/blue0513/items/6e860ba3b769bf0363a5
+;; EmacsにFocusが外れている際のFace
+(defun my-out-focused-mode-line()
+  (set-face-background 'mode-line "gray"))
+
+;; EmacsにFocusが当たっている際のFace
+(defun my-in-focused-mode-line()
+  (set-face-background 'mode-line "#FFA500"))
+
+;; Hookする
+;; (add-hook 'focus-out-hook 'my-out-focused-mode-line)
+;; (add-hook 'focus-in-hook 'my-in-focused-mode-line)
+
+
+;; mac
+(load "setting-mac")
 
 
 ;; =============== System ===============
@@ -106,6 +125,8 @@
 (add-to-list 'auto-mode-alist '("\\.inc\\'"  . verilog-mode))
 (add-to-list 'auto-mode-alist '("\\.vh\\'"   . verilog-mode))
 (add-to-list 'auto-mode-alist '("\\.vt\\'"   . verilog-mode))
+
+(setq js-indent-level 2)
 
 
 ;-------------------
@@ -212,7 +233,7 @@
 
 ;; ---------- parens ----------
 (require 'smartparens)
-(require 'rainbow-delimiters)
+;; (require 'rainbow-delimiters)
 
 
 ;; ---------- statusbar ----------
@@ -353,6 +374,10 @@
 ;; (load "ditaa")
 ;; (load-file "~/.emacs.d/others/141120042304.eww-weblio.el")
 
+
+(global-set-key (kbd "C-x C-c") 'helm-M-x)
+(global-set-key (kbd "C-x C-z") 'helm-M-x)
+(defalias 'exit 'save-buffers-kill-emacs)
 
 ;; Avoid writing 'package-selected-packages' in init.el
 (load
