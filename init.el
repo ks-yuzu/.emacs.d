@@ -3,8 +3,8 @@
 
 ;; =============== PATH ===============
 (setq load-path
-      (append '("~/.emacs.d/inits/")
-			  load-path))
+      (append load-path
+              '("~/.emacs.d/inits/")))
 
 ;; shell pass
 (add-hook 'comint-output-filter-functions
@@ -18,6 +18,7 @@
       (set-background-color "Black")
       (set-foreground-color "LightGray")
       (set-cursor-color "Gray")))
+
 
 ;; title
 (setq frame-title-format
@@ -44,6 +45,7 @@
 
 ;; syntax highlight
 (show-paren-mode t)        ; enphasis paren set
+(setq-default show-trailing-whitespace t)
 
 
 (load "setting-keybind")
@@ -101,6 +103,9 @@
 (add-to-list 'interpreter-mode-alist '("perl5"    . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
 
+(add-to-list 'auto-mode-alist '("\\.inc\\'"  . verilog-mode))
+(add-to-list 'auto-mode-alist '("\\.vh\\'"   . verilog-mode))
+(add-to-list 'auto-mode-alist '("\\.vt\\'"   . verilog-mode))
 
 
 ;-------------------
@@ -144,6 +149,7 @@
              (define-key c-mode-base-map (kbd "C-c c")   'compile)
              (define-key c-mode-base-map (kbd "C-c C-c") 'quickrun)
              ))
+
 (add-hook 'c-mode-hook
           '(lambda()
              (c-set-style "bsd")
@@ -152,17 +158,36 @@
              (setq indent-tabs-mode nil)
              (c-set-offset 'case-label '+)
              (c-set-offset 'access-label '*)
-             (setq comment-start "//")
+             (setq comment-start "// ")
              (setq comment-end "")
              (define-key c-mode-base-map (kbd "C-c c")   'compile)
              (define-key c-mode-base-map (kbd "C-c C-c") 'quickrun)
              ))
+
+(add-hook 'sh-mode-hook
+          '(lambda()
+             (define-key c-mode-base-map (kbd "C-c c")   'quickrun)
+             (define-key c-mode-base-map (kbd "C-c C-c") 'quickrun)
+             ))
+
+(add-hook 'cperl-mode-hook
+          '(lambda()
+             (local-set-key (kbd "C-c C-a") 'align)
+             ))
+
+
 
 ;(add-hook 'haskell-mode-hook  'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook  'turn-on-haskell-indentation)
 ;(add-hook 'haskell-mode-hook  'turn-on-haskell-indent)
 ;(add-hook 'haskell-mode-hook  'turn-on-haskell-simple-indent)
 
+
+
+
+;; others
+;; dired
+(setq dired-dwim-target t)
 
 
 
@@ -176,6 +201,7 @@
 (add-to-list 'package-archives '("org"        . "http://orgmode.org/elpa/")            t)
 (package-initialize)
 
+(load-theme 'reverse t)
 
 ;; ---------- auto completion ----------
 (require 'auto-complete)
@@ -198,6 +224,7 @@
 ;; ---------- Flycheck ----------
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'c++-mode-hook (lambda() (setq flycheck-gcc-language-standard "c++14")))
+(add-hook 'c++-mode-hook (lambda() (setq flycheck-clang-language-standard "c++14")))
 (add-hook 'c-mode-hook (lambda()
                          (setq flycheck-gcc-include-path
                                (list (expand-file-name "~/works/lab/rtos/toppers/asp3_macosx_xcode-20160515/include")
@@ -219,19 +246,18 @@
 ;; ---------- helm ----------
 (require 'helm-config)
 (helm-mode 1)
+;; (helm-autoresize-mode t)
 
 ;; Backspace : C-h
-(define-key helm-map (kbd "C-h") 'delete-backward-char)
+(define-key helm-map            (kbd "C-h") 'delete-backward-char)
 (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
 
-;; complete : TAB
-;; (define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
-;; (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
-;; use C-i instead of this
-
-(define-key global-map (kbd "M-x") 'helm-M-x)
+(define-key global-map (kbd "M-x"    ) 'helm-M-x)
 (define-key global-map (kbd "C-x C-f") 'helm-find-files)
-(define-key global-map (kbd "C-x b") 'helm-buffers-list)
+(define-key global-map (kbd "C-x b"  ) 'helm-buffers-list)
+(define-key global-map (kbd "C-x C-b") 'helm-mini)
+(define-key global-map (kbd "C-c h o") 'helm-occur)
+(define-key global-map (kbd "C-c h g") 'helm-google-suggest)
 
 
 ;; ---------- undo-tree ----------
@@ -274,7 +300,7 @@
 (require 'yasnippet)
 (setq yas-snippet-dirs
       '("~/.emacs.d/mysnippets"
-        "~/.emacs.d/elpa/yasnippet-20160801.1142/snippets"
+        "~/.emacs.d/snippets"
         ))
 
 (yas-global-mode 1)
@@ -293,15 +319,17 @@
 (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode))
 
 
+(load "setting-mode-line")
 (load "setting-keybind")                     ; reload
 (load "setting-dired")
 (load "setting-skk")
 (load "setting-highlight-symbol")
-;; (load "setting-mail")
-(load "setting-mail-in-kwansei")
+(load "setting-mail")
+;; (load "setting-mail-in-kwansei")
 (load "setting-migemo")
 (load "setting-quickrun")
 (load "setting-git")
+(load "setting-evil")
 (load "twittering")
 (load "verilog")
 (load "tools")
@@ -311,6 +339,10 @@
 (load "setting-reveal")
 (load "setting-processing")
 (load "setting-tex")
+(load "setting-js")                     ;TODO: make hook
+
+(load "setting-ediff")
+(load "setting-helm")
 
 (load "setting-plenv")
 ;; (load "flyspell")
