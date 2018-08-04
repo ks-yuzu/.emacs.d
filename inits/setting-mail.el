@@ -14,8 +14,11 @@
       ;;for non ascii-characters in folder-names
       elmo-imap4-use-modified-utf7         t)
 
-(setq user-mail-address          "fwm83185@kwansei.ac.jp")
+(setq wl-bcc                     "yuuki.oosako@kwansei.ac.jp")
+
 (setq user-full-name             "Yuuki Oosako")
+(setq user-mail-address          "yuuki.oosako@kwansei.ac.jp")
+
 (setq smtpmail-smtp-server       "outlook.office365.com")
 ;; (setq smtpmail-smtp-server       "webmail.kwansei.ac.jp")
 (setq wl-smtp-posting-server     "outlook.office365.com")

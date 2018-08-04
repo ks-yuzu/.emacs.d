@@ -13,6 +13,7 @@
       ;;for non ascii-characters in folder-names
       elmo-imap4-use-modified-utf7         t)
 
+(setq wl-bcc                     "yuuki.oosako@kwansei.ac.jp")
 
 (setq user-full-name             "Yuuki Oosako")
 (setq user-mail-address          "yuuki.oosako@kwansei.ac.jp")
