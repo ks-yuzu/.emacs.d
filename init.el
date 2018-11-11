@@ -71,7 +71,7 @@
 
 
 ;; mac
-(load "setting-mac")
+;; (load "setting-mac")
 
 
 ;; =============== System ===============
@@ -284,6 +284,7 @@
 ;; ---------- undo-tree ----------
 (require 'undo-tree)
 (global-undo-tree-mode t)
+(setq undo-tree-enable-undo-in-region nil)
 
 
 ;; ---------- setting in each language mode ----------
