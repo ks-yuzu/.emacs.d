@@ -3,6 +3,8 @@
 (require 'skk)
 (global-set-key "\C-xj" 'skk-mode)
 
+;; モードラインに SKK アイコンを非表示
+(setq skk-show-icon nil)
 
 ;; 辞書の文字コード指定
 (setq skk-jisyo-code 'utf-8)

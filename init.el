@@ -4,7 +4,8 @@
 ;; =============== PATH ===============
 (setq load-path
       (append load-path
-              '("~/.emacs.d/inits/")))
+              '("~/.emacs.d/inits/")
+              '("~/.emacs.d/yspel/")))
 
 ;; shell pass
 (add-hook 'comint-output-filter-functions
@@ -210,7 +211,8 @@
 ;; dired
 (setq dired-dwim-target t)
 
-
+;; 日本語チェック (git clone git://github.com/yama-natuki/yspel)
+(require 'yspel)
 
 ;; =============== Packages ===============
 
@@ -297,7 +299,10 @@
            (cons '("\\.md" . markdown-mode)
                  auto-mode-alist))
      (add-hook 'markdown-mode-hook
-               '(lamdba() (setq markdown-command "mdown")))))
+               '(lamdba()
+                       (setq markdown-command "mdown")))
+     (set-face-attribute 'markdown-code-face nil :inherit 'default) ))
+
 
 ;; haskell-mode
 ;; (require 'haskell-mode)
@@ -367,6 +372,7 @@
 (load "setting-helm")
 
 (load "setting-plenv")
+(load "setting-typescript")
 ;; (load "flyspell")
 
 ;; (load "lookup")
@@ -375,10 +381,14 @@
 ;; (load "ditaa")
 ;; (load-file "~/.emacs.d/others/141120042304.eww-weblio.el")
 
+(load "tex-with-close")
+
 
 (global-set-key (kbd "C-x C-c") 'helm-M-x)
 (global-set-key (kbd "C-x C-z") 'helm-M-x)
 (defalias 'exit 'save-buffers-kill-emacs)
+
+
 
 ;; Avoid writing 'package-selected-packages' in init.el
 (load

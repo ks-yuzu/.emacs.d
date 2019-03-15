@@ -65,7 +65,8 @@
 
 ;; latex を処理するコマンド
 (setq org-latex-pdf-process
-	  '("~/bin/tex2pdf-no-center %b.tex"))
+	  ;; '("~/bin/tex2pdf-no-center %b.tex"))
+	  '("~/bin/tex2pdf %b.tex"))
 
 
 ;; 

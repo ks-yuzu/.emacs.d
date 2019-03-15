@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: esdoc
+# key: esdoc
+# --
+/**
+ * @desc   [説明]
+ * @param  {number} [arg1] - [説明]
+ * @param  {string} [arg2] - [説明]
+ * @return {string} [説明]
+ */

@@ -23,12 +23,3 @@
           (message "Compile Failer")))
     (if (eq ps 'signal)
         (message "Compile Abnormal end"))))
-
-
-;; この処理を init.el から実行して設定反映
-(add-hook 'latex-mode-hook (lambda ()
-  (local-set-key  (kbd "C-c C-c") 'compile)))
-
-
-;; このファイルを手動で読んだ時だけ設定反映
-;; (local-set-key  (kbd "C-c C-c") 'compile)
