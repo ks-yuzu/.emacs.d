@@ -1,0 +1,12 @@
+;; 日本語の文字化け防止
+(setq ps-multibyte-buffer 'non-latin-printer)
+(require 'ps-mule)
+(defalias 'ps-mule-header-string-charsets 'ignore)
+
+(setq ps-print-header      nil
+      ps-print-footer      nil
+
+      ps-line-number       t
+      ps-line-number-start 1
+      ps-line-number-step  1
+)

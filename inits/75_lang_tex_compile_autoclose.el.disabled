@@ -25,4 +25,10 @@
         (message "Compile Abnormal end"))))
 
 
-(global-set-key (kbd "C-c c") 'compile)
+
+;; ;; 常に有効
+;; (add-hook 'latex-mode-hook (lambda ()
+;;   (local-set-key  (kbd "C-c C-c") 'compile)))
+
+;; このファイルを手動で読んだ時だけ有効
+(local-set-key  (kbd "C-c C-c") 'compile)

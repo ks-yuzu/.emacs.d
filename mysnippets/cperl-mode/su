@@ -5,8 +5,10 @@
 #!/usr/bin/env perl
 use v5.26;
 use warnings;
-${1:use diagnostics;}
-
+${1:use diagnostics;
+}${2:use autodie qw(:all);
+}
 use utf8;
 use open IO => qw/:encoding(UTF-8) :std/;
+
 $0
