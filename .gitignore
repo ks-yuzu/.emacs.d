@@ -1,7 +1,7 @@
-
-elpa
-autosave
-backup
+elpa/*
+el-get/*
+autosave/*
+backup/*
 auto-save-list
 tramp
 eshell
@@ -10,4 +10,4 @@ emacs-realtime-markdown-viewer-master
 emacs-visited-files
 .yas-compiled-snippets.el
 .org-id-locations
-el-get
+!.gitkeep
