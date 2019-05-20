@@ -1,7 +1,7 @@
 ;; (if (eq system-type 'gnu/linux)
 (if (member "Ricty" (font-family-list))
     (progn
-      (set-face-attribute 'default nil :family "Ricty" :height 120)
+      (set-face-attribute 'default nil :family "Ricty" :height 155)
       (set-fontset-font (frame-parameter nil 'font)
                         'japanese-jisx0208
                         (font-spec :family "Ricty"))
