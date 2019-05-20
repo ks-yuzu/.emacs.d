@@ -3,6 +3,8 @@
 (el-get-bundle plenv)
 (require 'plenv)
 
+(setenv "PLENV_VERSION" "5.28.1")
+
 ;; (require 'plenv) ;; for guess-plenv-perl-path
 ;; (setenv "PLENV_VERSION" "5.24.1")
 ;; (setenv "PLENV_VERSION" "5.26.1")
