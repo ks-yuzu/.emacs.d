@@ -1,5 +1,5 @@
 ;; ---------- Flycheck ----------
-(el-get-bundler flycheck)
+(el-get-bundle flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'c++-mode-hook (lambda() (setq flycheck-gcc-language-standard "c++14")))
 (add-hook 'c++-mode-hook (lambda() (setq flycheck-clang-language-standard "c++14")))
