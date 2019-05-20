@@ -11,3 +11,6 @@ emacs-visited-files
 .yas-compiled-snippets.el
 .org-id-locations
 !.gitkeep
+recentf
+transient/*
+ac-comphist.dat
