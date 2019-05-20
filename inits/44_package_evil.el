@@ -48,15 +48,6 @@
 (blink-cursor-mode -1)
 
 
-(require 'hlinum)
-(hlinum-activate)
-(defadvice evil-set-cursor-color (after keu-hlinum activate)
-  "Reflect cursor color change to `linum-highlight-face' for `hlinum'."
-  (set-face-attribute 'linum-highlight-face nil
-                      :background (ad-get-arg 0)))
-(global-linum-mode t)
-
-
 ;; (defadvice update-buffer-local-cursor-color
 ;;   (around evil-update-buffer-local-cursor-color-in-insert-state activate)
 ;;   ;; SKKによるカーソル色変更を, 挿入ステートかつ日本語モードの場合に限定
