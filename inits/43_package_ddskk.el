@@ -4,6 +4,8 @@
 (require 'skk)
 
 (global-set-key "\C-xj" 'skk-mode)
+;; C-x C-j を上書き
+;; (global-set-key (kbd "C-x C-j") 'dired-jump)
 
 ;; モードラインに SKK アイコンを非表示
 (setq skk-show-icon nil)
@@ -14,11 +16,11 @@
 ;; - 個人辞書の文字コードを合わせる
 ;; - L 辞書等の文字コードを合わせる
 
-(global-set-key "\C-xj" 'skk-mode)
 (setq skk-jisyo-code 'utf-8)
 
-(setq skk-large-jisyo "/home/yuzu/.SKK-JISYO.L.utf8")
-(setq skk-jisyo       "/home/yuzu/.skk-jisyo.utf8")
+(setq skk-large-jisyo (expand-file-name "~/.SKK-JISYO.L.utf8"))
+(setq skk-jisyo       (expand-file-name "~/.skk-jisyo.utf8"))
+
 
 ;; (setq skk-server-host "localhost"
 ;; 	  skk-server-portnum 1178
@@ -28,7 +30,7 @@
 ;; henkan by function key
 (setq skk-j-mode-function-key-usage 'conversion)
 
-;; auto select hankaku&zenkaku of kutouten & - 
+;; auto select hankaku&zenkaku of kutouten & -
 (setq skk-use-auto-kutouten t)
 
 ;; toggle by F4
