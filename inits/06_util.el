@@ -1,4 +1,8 @@
-;; (defun window-resizer ()
+(defun today()
+  (interactive)
+  (insert (format-time-string "%Y/%m/%d" (current-time))))
+
+
 (defun resize-window ()
   "Control window size and position."
   (interactive)
