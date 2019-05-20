@@ -1,7 +1,8 @@
 ;;; Code:
 
+(el-get-bundle with-editor)
 (el-get-bundle git-commit)
-(require 'git-commit)
+(use-package git-commit)
 
 ;; ;; コミットメッセージ 1行目のカラー表示を解除
 ;; (set-face-foreground 'git-commit-summary-face nil)
