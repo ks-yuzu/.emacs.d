@@ -1,5 +1,7 @@
 ;; 01_keybindings_package_independent.el
 
+(global-set-key (kbd "C-x C-j") 'dired-jump)
+
 (defun my-move-beginning-of-line ()
   (interactive)
   (if (bolp)
