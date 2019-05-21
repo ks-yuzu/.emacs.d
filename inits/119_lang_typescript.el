@@ -1,4 +1,4 @@
-(el-get-build typescript-mode)
+(el-get-bundle typescript-mode)
 (use-package typescript-mode)
 
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
@@ -7,7 +7,7 @@
 
 
 ;; npm install -g clausreinke/typescript-tools
-(el-get-build tss)
+(el-get-bundle tss)
 (use-package tss)
 
 (setq tss-popup-help-key "C-:")
