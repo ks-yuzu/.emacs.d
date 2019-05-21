@@ -19,13 +19,15 @@ my @warnings;
 my @errors;
 my %n_total_lines;
 
-for my $file ( @files ) {
+my $number_digit = 3;
+
+for my $file ( sort @files ) {
   my $basename = $file->basename;
 
   my $f_enabled = 1;
-  if ( $basename =~ /^(\d{2})_.*\.el$/ ) {
+  if ( $basename =~ /^(\d{$number_digit,})_.*\.el$/ ) {
   }
-  elsif ( $basename =~ /^(\d{2})_.*\.el.disabled$/ ) {
+  elsif ( $basename =~ /^(\d{$number_digit,})_.*\.el.disabled$/ ) {
     $f_enabled = 0;
   }
   else {
