@@ -1,6 +1,7 @@
 ;; verilog-mode
 
-; (require 'verilog-mode)
+(el-get-bundle verilog-mode)
+
 (autoload 'verilog-mode "verilog-mode" "Verilog mode" t)
 (setq verilog-indent-level             2
       verilog-indent-level-module      2
