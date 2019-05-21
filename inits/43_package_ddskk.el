@@ -4,8 +4,9 @@
 (require 'skk)
 
 (global-set-key "\C-xj" 'skk-mode)
+
 ;; C-x C-j を上書き
-;; (global-set-key (kbd "C-x C-j") 'dired-jump)
+(global-set-key (kbd "C-x C-j") 'dired-jump)
 
 ;; モードラインに SKK アイコンを非表示
 (setq skk-show-icon nil)
