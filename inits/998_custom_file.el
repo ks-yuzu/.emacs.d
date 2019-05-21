@@ -1,7 +1,6 @@
 ;; custom-file をこのファイルにする
-(load
- (setq custom-file
-       (expand-file-name "inits/98_custom_file.el" user-emacs-directory)))
+(setq custom-file
+       (expand-file-name "inits/98_custom_file.el" user-emacs-directory))
 
 
 (custom-set-variables
@@ -14,7 +13,7 @@
  '(org-display-custom-times t)
  '(org-time-stamp-custom-formats nil)
  '(org-time-stamp-formats (quote ("<%Y/%m/%d (%a)>" . "<%Y/%m/%d (%a) %H:%M>")) t)
- '(package-selected-packages (quote (git-commit plenv)))
+ '(package-selected-packages (quote (ox-reveal tldr git-commit plenv)))
  '(system-time-locale "C" t))
 
 (custom-set-faces
