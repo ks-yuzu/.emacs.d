@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: noformat
+# key: noformat
+# --
+\{noformat\}
+$0
+\{noformat\}

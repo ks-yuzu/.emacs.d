@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: code
+# key: code
+# --
+\{code:${1:${2:bash}|}${3:title=${4:sample.pl}|}${5:collapse=true|}\}
+$0
+\{code\}
