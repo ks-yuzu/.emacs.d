@@ -1,6 +1,6 @@
 ;; custom-file をこのファイルにする
 (setq custom-file
-       (expand-file-name "inits/98_custom_file.el" user-emacs-directory))
+       (expand-file-name "inits/998_custom_file.el" user-emacs-directory))
 
 
 (custom-set-variables
