@@ -57,7 +57,7 @@ for my $file ( sort @files ) {
   say sprintf "%-35s %5d %s",
     $basename =~ s/\..*$//r,
     scalar @lines,
-    ($f_enabled ? 'enabled' : 'disabled');
+    ($f_enabled ? color('green').'enabled' : color('red').'disabled').color('reset');
 }
 
 say STDERR '';
