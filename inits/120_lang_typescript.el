@@ -1,21 +1,30 @@
-(el-get-bundle typescript-mode)
-(use-package typescript-mode)
+;; (el-get-bundle typescript-mode)
+;; (use-package typescript-mode)
+;; tss 同梱の typescript.el を使う
 
+;; shell-cmd: npm install -g clausreinke/typescript-tools
+;; (el-get-bundle tss)
+;; (use-package tss)
+
+;; typescript-mode
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
 (setq typescript-indent-level 2)
+;;(font-lock-add-keywords 'typescript-mode
+;;                        '(
+;;                          ("const\s" . 'hi-blue-b)
+;;                          ("async\s" . 'hi-blue-b)
+;;                          ("await\s" . 'hi-blue-b)
+;;                          ))
 
 
-;; npm install -g clausreinke/typescript-tools
-(el-get-bundle tss)
-(use-package tss)
 
-(setq tss-popup-help-key "C-:")
-(setq tss-jump-to-definition-key "C->")
-(setq tss-implement-definition-key "C-c i")
-
-(tss-config-default)
+;; tss
+;; (setq tss-popup-help-key "C-:")
+;; (setq tss-jump-to-definition-key "C->")
+;; (setq tss-implement-definition-key "C-c i")
+;; (tss-config-default)
 
 
 ;; tide
