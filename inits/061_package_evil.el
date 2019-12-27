@@ -38,6 +38,11 @@
 (define-key evil-insert-state-map "\C-v" 'evil-scroll-down)
 (define-key evil-insert-state-map "\M-v" 'evil-scroll-up)
 
+(setq confirm-kill-emacs 'y-or-n-p)
+(if (evil-mode)
+    (progn
+      (bind-keys :map evil-normal-state-map
+                 ("Z Z" . save-buffers-kill-terminal))))
 
 (setq evil-default-cursor      'block
       evil-normal-state-cursor '("green")
