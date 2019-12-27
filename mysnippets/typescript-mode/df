@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: df
+# key: df
+# --
+/**
+ * $0
+ * @param {} 1
+ */
