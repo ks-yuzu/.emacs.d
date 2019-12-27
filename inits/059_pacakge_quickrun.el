@@ -1,6 +1,12 @@
 (el-get-bundle quickrun)
-(global-unset-key (kbd "C-c C-c"))
-(global-set-key   (kbd "C-c C-c") 'quickrun)
+;; (global-unset-key (kbd "C-c C-c"))
+;; (global-set-key   (kbd "C-c C-c") 'quickrun)
+
+(use-package quickrun
+  :diminish
+  ;; :hook
+  ;; ((prog-mode shell-script-mode) . quickrun-mode)
+  :bind (("C-c C-c" . quickrun)))
 
 
 
