@@ -9,6 +9,16 @@
       ;;              '(".*Ricty.*" . 1))
 ))
 
+(if (member "Cica" (font-family-list))
+    (progn
+      (set-face-attribute 'default nil :family "Cica" :height 155)
+      (set-fontset-font (frame-parameter nil 'font)
+                        'japanese-jisx0208
+                        (font-spec :family "Cica"))
+      ;; (add-to-list 'face-font-rescale-alist
+      ;;              '(".*Cica.*" . 1))
+))
+
 ;; ;; (if (eq system-type 'windows-nt)
 ;; (if (eq system-type 'cygwin)
 ;;     (progn
