@@ -3,7 +3,7 @@
 (el-get-bundle evil)
 (require 'evil)
 
-;; (define-key evil-normal-state-map "\C-a" 'beginning-of-line)
+(define-key evil-normal-state-map "\C-a" 'json-increment-number-at-point)
 (define-key evil-insert-state-map "\C-a" 'beginning-of-line)
 ;; (define-key evil-visual-state-map "\C-a" 'beginning-of-line)
 ;; (define-key evil-motion-state-map "\C-a" 'beginning-of-line)
