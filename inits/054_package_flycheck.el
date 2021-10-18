@@ -1,8 +1,8 @@
 ;; ---------- Flycheck ----------
 (el-get-bundle flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
-(add-hook 'c++-mode-hook (lambda() (setq flycheck-gcc-language-standard "c++14")))
-(add-hook 'c++-mode-hook (lambda() (setq flycheck-clang-language-standard "c++14")))
+(add-hook 'c++-mode-hook (lambda() (setq flycheck-gcc-language-standard "c++17")))
+(add-hook 'c++-mode-hook (lambda() (setq flycheck-clang-language-standard "c++17")))
 ;; (add-hook 'c-mode-hook (lambda()
 ;;                          (setq flycheck-gcc-include-path
 ;;                                (list (expand-file-name "~/works/lab/rtos/toppers/asp3_macosx_xcode-20160515/include")
