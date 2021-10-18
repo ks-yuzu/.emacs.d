@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: result
+# key: result
+# --
+{code:bash|title=実行結果|collapse=true|}
+$0
+{code}
