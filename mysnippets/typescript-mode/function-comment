@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: function-comment
+# key: /**
+# --
+/**
+ * $0
+ * @param $1 - $2
+ * @returns $3
+ */
