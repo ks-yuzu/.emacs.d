@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: skelton
+# key: skelton
+# --
+<script lang="ts">
+$0
+</script>
+
+<div>
+</div>
+
+<style>
+</style>

@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: phinadefine
+# key: phinadefine
+# --
+phina.define('$1', {
+  superClass: '$2',
+  init: function() {
+    this.superInit({
+      $3
+    })
+  },
+})
