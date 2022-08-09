@@ -1,5 +1,5 @@
-(el-get-bundle docker-tramp)
-(use-package docker-tramp-compat)
-
-(set-variable 'docker-tramp-use-names t)
+(leaf docker-tramp-compat
+  :ensure docker-tramp
+  :custom
+  (docker-tramp-use-names . t))
 

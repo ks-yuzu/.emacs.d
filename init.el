@@ -38,6 +38,8 @@
 (if window-system (progn
                     (tool-bar-mode 0)
                     (scroll-bar-mode 0)))
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 ;; ]-----------------------------------------------------------
 
 ;; -- cursor -------------------------------------------------[
@@ -97,6 +99,7 @@
               indent-tabs-mode nil)
 
 (global-set-key "\C-h" 'delete-backward-char)
+(setq ring-bell-function 'ignore)
 
 
 

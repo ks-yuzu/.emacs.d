@@ -1,4 +1,6 @@
-(el-get-bundle highlight-symbol)
-(global-set-key (kbd "M-*") 'highlight-symbol-at-point)
-(global-set-key (kbd "M-n") 'highlight-symbol-next)
-(global-set-key (kbd "M-p") 'highlight-symbol-prev)
+(leaf highlight-symbol
+  :ensure t
+  :bind
+  ("M-*" . highlight-symbol-at-point)
+  ("M-n" . highlight-symbol-next)
+  ("M-p" . highlight-symbol-prev))

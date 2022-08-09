@@ -1,2 +1,4 @@
-(el-get-bundle smartparens)
-(require 'smartparens)
+(leaf smartparens
+  :ensure t
+  :global-minor-mode t)
+

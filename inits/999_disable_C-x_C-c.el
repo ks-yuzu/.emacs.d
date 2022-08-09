@@ -1,3 +1,9 @@
-(defalias 'exit 'save-buffers-kill-emacs)
-(global-set-key (kbd "C-x C-c") 'helm-M-x)
+(leaf safe-exit
+  :bind
+  ("C-x C-c" . helm-M-x)
+  ;; :config
+  ;; (defalias 'exit 'save-buffers-kill-terminal)
+  )
+
+(defalias 'exit 'save-buffers-kill-terminal)
 
