@@ -1,6 +1,7 @@
 ;; shell-cmd: npm i -g typescript-language-server; npm i -g typescript
 
 (leaf typescript-mode
+  :leaf-defer nil
   :ensure t
   :mode (("\\.tsx\\'" . typescript-mode))
   :hook
@@ -8,6 +9,14 @@
   ;(typescript-mode-hook . '(lambda () (setq typescript-indent-level 2)))
   :custom
   (typescript-indent-level . 2)
+  :bind
+  (:typescript-mode-map ("C-c C-a" . align))
+  :config
+  (with-eval-after-load 'align
+    (add-to-list 'align-rules-list
+                 '(map-align-after-colon
+                   (regexp . ":\\(\\s-*\\)")
+                   (modes  . '(typescript-mode)))))
   )
 ;; (require 'ansi-color)
 ;; (defun colorize-compilation-buffer ()

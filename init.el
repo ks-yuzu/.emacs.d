@@ -70,8 +70,11 @@
 (add-to-list 'backup-directory-alist         ; backup~
        (cons "\\.*$" (expand-file-name "~/.emacs.d/backup/")))
 
+(setq delete-auto-save-files nil)            ; keep autosave
 (setq auto-save-file-name-transforms         ; #autosave#
        `((".*", (expand-file-name "~/.emacs.d/autosave/") t)))
+
+(setq create-lockfiles nil)                  ; .#lockfile
 ;; ]-----------------------------------------------------------
 
 ;; -- path
@@ -121,5 +124,12 @@
 
 ;; -- init-loader --------------------------------------------[
 (el-get-bundle init-loader)
+
+(require 'profiler)
+(profiler-start 'cpu)
+
 (init-loader-load)
+
+(profiler-report)
+(profiler-stop)
 ;; ]-----------------------------------------------------------

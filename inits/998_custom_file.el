@@ -14,14 +14,15 @@
  '(doom-themes-enable-italic t)
  '(imenu-list-position 'left t)
  '(imenu-list-size 30 t)
- '(org-display-custom-times t t)
- '(org-time-stamp-custom-formats nil t)
+ '(org-display-custom-times t)
+ '(org-time-stamp-custom-formats nil)
  '(org-time-stamp-formats '("<%Y/%m/%d (%a)>" . "<%Y/%m/%d (%a) %H:%M>") t)
  '(package-archives
    '(("org" . "https://orgmode.org/elpa/")
      ("melpa" . "https://melpa.org/packages/")
      ("gnu" . "https://elpa.gnu.org/packages/")))
- '(package-selected-packages '(company csharp-mode ox-reveal tldr git-commit plenv))
+ '(package-selected-packages
+   '(lsp-ui company csharp-mode ox-reveal tldr git-commit plenv))
  '(system-time-locale "C" t)
  '(warning-suppress-types '((comp))))
 

@@ -13,5 +13,10 @@
     ;;                (eldoc-mode)))
     (yaml-mode-hook . lsp)
     :config
-    (setq lsp-yaml-schemas '(:kubernetes "/*-k8s.yaml"))))
+    (setq lsp-yaml-schemas '(:kubernetes "/*.yaml"))))
 
+
+(leaf k8s-mode
+  :ensure t
+  :mode (("\\.patch\\.yaml\\'" . yaml-mode))
+)

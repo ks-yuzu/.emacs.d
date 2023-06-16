@@ -25,6 +25,14 @@
       :default "nodejs")
     (quickrun-set-default "javascript" "nodejs"))
 
+  (leaf quickrun-kustomize
+    :config
+    (quickrun-add-command "kustomize"
+      '((:command . "kustomize")
+        (:exec . ("%c build --enable-alpha-plugins --enable-exec --enable-helm --load-restrictor LoadRestrictionsNone .")))
+      :default "yaml")
+    (quickrun-set-default "yaml" "kustomize"))
+
   (defvar quickrun-file-alist
     '(("\\.c\\'"                                  . "c")
       ("\\.\\(cpp\\|cxx\\|C\\|cc\\)\\'"           . "c++")

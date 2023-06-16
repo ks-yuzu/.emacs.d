@@ -50,10 +50,13 @@
 
   (leaf company-c-headers
     :ensure t
+    :require t
     :defvar company-backends company-c-headers-path-system
     :config
-    (add-to-list 'company-backends 'company-c-headers))
-    (add-to-list 'company-c-headers-path-system (file-expand-wildcards "/usr/include/c++/*"))
+    (add-to-list 'company-backends 'company-c-headers)
+    (setq company-c-headers-path-system
+          (append company-c-headers-path-system (file-expand-wildcards "/usr/include/c++/*")))
+    )
   )
 
 

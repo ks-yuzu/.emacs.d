@@ -30,7 +30,7 @@
   (leaf vertico
     :ensure t
     :leaf-defer nil
-    :global-minor-mode t
+;;  :global-minor-mode t
     :custom
     (vertico-cycle  . t)
     (vertico-count  . 40)
@@ -53,6 +53,7 @@
                                                 (save-excursion (end-of-line) (point))
                                                 #'delete)))))))
      )
+    :hook (after-init-hook . vertico-mode)
     )
   (leaf fido-vertical-mode
     :disabled t
@@ -111,5 +112,6 @@
     ;; (leaf all-the-icons-completion
     ;;   :ensure t
     ;;   :hook (after-init-hook))
+    :hook (after-init-hook . marginalia-mode)
     )
   )

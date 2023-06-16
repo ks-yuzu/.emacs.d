@@ -3,6 +3,7 @@
 
 (leaf lsp-mode
   :ensure t
+  :leaf-defer nil
   :hook
   (lsp-mode . lsp-ui-mode)
   :custom
