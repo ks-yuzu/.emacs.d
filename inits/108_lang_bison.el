@@ -1,3 +1,7 @@
-(add-to-list 'auto-mode-alist '("\\.ll\\'"   . bison-mode))
-(add-to-list 'auto-mode-alist '("\\.yy.c\\'" . bison-mode))
+(leaf bison-mode
+  :disabled
+  :ensure t
+  :mode (("\\.ll\\'"   . bison-mode)
+         ("\\.yy.c\\'" . bison-mode))
+  )
 

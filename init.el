@@ -38,6 +38,8 @@
 (if window-system (progn
                     (tool-bar-mode 0)
                     (scroll-bar-mode 0)))
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 ;; ]-----------------------------------------------------------
 
 ;; -- cursor -------------------------------------------------[
@@ -68,8 +70,11 @@
 (add-to-list 'backup-directory-alist         ; backup~
        (cons "\\.*$" (expand-file-name "~/.emacs.d/backup/")))
 
+(setq delete-auto-save-files nil)            ; keep autosave
 (setq auto-save-file-name-transforms         ; #autosave#
        `((".*", (expand-file-name "~/.emacs.d/autosave/") t)))
+
+(setq create-lockfiles nil)                  ; .#lockfile
 ;; ]-----------------------------------------------------------
 
 ;; -- path
@@ -97,6 +102,7 @@
               indent-tabs-mode nil)
 
 (global-set-key "\C-h" 'delete-backward-char)
+(setq ring-bell-function 'ignore)
 
 
 
@@ -118,5 +124,12 @@
 
 ;; -- init-loader --------------------------------------------[
 (el-get-bundle init-loader)
+
+(require 'profiler)
+(profiler-start 'cpu)
+
 (init-loader-load)
+
+(profiler-report)
+(profiler-stop)
 ;; ]-----------------------------------------------------------

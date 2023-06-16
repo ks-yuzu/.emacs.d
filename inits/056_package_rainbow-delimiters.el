@@ -1,4 +1,4 @@
-(el-get-bundle rainbow-delimiters)
-(use-package rainbow-delimiters
-    :hook
-    (prog-mode . rainbow-delimiters-mode))
+(leaf rainbow-delimiters
+  :ensure t
+  :hook
+  (prog-mode-hook . rainbow-delimiters-mode))

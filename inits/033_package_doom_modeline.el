@@ -1,17 +1,14 @@
-(el-get-bundle elpa:shrink-path)
-(el-get-bundle doom-modeline)
-
-;; (all-the-icons-install-fonts)
-
-(use-package doom-modeline
+(leaf doom-modeline
+  :ensure t
+  :init
+  (doom-modeline-mode 1)
   :custom
-  ;; パスを表示
-  (doom-modeline-buffer-file-name-style 'truncate-with-project)
-  (doom-modeline-icon t)
-  (doom-modeline-major-mode-icon nil)
-  (doom-modeline-minor-modes nil)
-  :hook
-  (after-init . doom-modeline-mode)
+  (doom-modeline-height                 . 30)
+  ;; (doom-modeline-buffer-file-name-style . 'truncate-upto-project)
+  (doom-modeline-buffer-file-name-style . 'truncate-except-project)
+  (doom-modeline-icon                   . t)
+  (doom-modeline-major-mode-icon        . nil)
+  (doom-modeline-minor-modes            . nil)
   :config
   (line-number-mode 0)
   (column-number-mode 0)

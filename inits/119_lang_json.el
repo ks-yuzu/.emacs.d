@@ -1,3 +1,4 @@
-(el-get-bundle json-mode)
-(use-package json-mode)
+(leaf json-mode
+  :ensure t)
+
 

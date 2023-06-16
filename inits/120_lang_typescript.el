@@ -1,3 +1,31 @@
+;; shell-cmd: npm i -g typescript-language-server; npm i -g typescript
+
+(leaf typescript-mode
+  :leaf-defer nil
+  :ensure t
+  :mode (("\\.tsx\\'" . typescript-mode))
+  :hook
+  (typescript-mode-hook . lsp)
+  ;(typescript-mode-hook . '(lambda () (setq typescript-indent-level 2)))
+  :custom
+  (typescript-indent-level . 2)
+  :bind
+  (:typescript-mode-map ("C-c C-a" . align))
+  :config
+  (with-eval-after-load 'align
+    (add-to-list 'align-rules-list
+                 '(map-align-after-colon
+                   (regexp . ":\\(\\s-*\\)")
+                   (modes  . '(typescript-mode)))))
+  )
+;; (require 'ansi-color)
+;; (defun colorize-compilation-buffer ()
+;;   (ansi-color-apply-on-region compilation-filter-start (point-max)))
+;; (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
+
+
+
 ;; (el-get-bundle typescript-mode)
 ;; (use-package typescript-mode)
 ;; tss 同梱の typescript.el を使う
@@ -6,11 +34,6 @@
 ;; (el-get-bundle tss)
 ;; (use-package tss)
 
-;; typescript-mode
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
-
-(setq typescript-indent-level 2)
 ;;(font-lock-add-keywords 'typescript-mode
 ;;                        '(
 ;;                          ("const\s" . 'hi-blue-b)
@@ -18,25 +41,8 @@
 ;;                          ("await\s" . 'hi-blue-b)
 ;;                          ))
 
-
-
 ;; tss
 ;; (setq tss-popup-help-key "C-:")
 ;; (setq tss-jump-to-definition-key "C->")
 ;; (setq tss-implement-definition-key "C-c i")
 ;; (tss-config-default)
-
-
-;; tide
-;; (package-install 'tide)
-;; (require 'tide)
-;; (add-hook 'typescript-mode-hook
-;; 		  (lambda ()
-;; 			(interactive)
-;; 			(tide-setup)
-;; 			(flycheck-mode +1)
-;; 			(setq flycheck-check-syntax-automatically '(save mode-enabled))
-;; 			(eldoc-mode +1)
-;; 			(tide-hl-identifier-mode +1)
-;; 			(company-mode +1)
-;; 			(global-set-key (kbd "M-*") 'tide-jump-back)))

@@ -1,12 +1,11 @@
-(el-get-bundle highlight-indent-guides)
-(use-package highlight-indent-guides
+(leaf highlight-indent-guides
+  :ensure t
   :diminish
   :hook
-  ((prog-mode yaml-mode) . highlight-indent-guides-mode)
+  ((prog-mode-hook yaml-mode-hook) . highlight-indent-guides-mode)
   :custom
-  (highlight-indent-guides-auto-enabled t)
-  (highlight-indent-guides-responsive t)
-  (highlight-indent-guides-method 'column)
-)
+  (highlight-indent-guides-auto-enabled . t)
+  (highlight-indent-guides-responsive   . t)
+  (highlight-indent-guides-method       . 'column))
 
 

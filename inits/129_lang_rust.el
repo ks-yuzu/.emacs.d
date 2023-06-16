@@ -1,3 +1,1 @@
-(use-package rust-mode
-  :ensure)
-
+(leaf rust-mode :ensure t)

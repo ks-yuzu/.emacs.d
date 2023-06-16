@@ -1,12 +1,13 @@
-(el-get-bundle elpa:xml-rpc)
-(el-get-bundle confluence)
-(use-package confluence)
+(leaf confluence
+  :url https://mirrors.zju.edu.cn/elpa/melpa/confluence-readme.txt
+  :el-get jahlborn/confluence-el elpa:xml-rpc
+  :mode (("\\.cwiki\\'" . confluence-edit-mode))
+  :hook
+  (confluence-edit-mode-hook . (lambda ()
+                                 (unless (or (file-exists-p "makefile") (file-exists-p "Makefile"))
+                                   (set (make-local-variable 'compile-command)
+                                        (concat "perl push.pl "
+                                                (buffer-file-name))))))
+  :config
+  )
 
-(add-to-list 'auto-mode-alist '("\\.cwiki\\'" . confluence-edit-mode))
-
-(add-hook 'confluence-edit-mode-hook
-          (lambda ()
-            (unless (or (file-exists-p "makefile") (file-exists-p "Makefile"))
-              (set (make-local-variable 'compile-command)
-                   (concat "perl push.pl "
-                           (buffer-file-name))))))

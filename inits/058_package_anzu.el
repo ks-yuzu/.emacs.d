@@ -1,6 +1,9 @@
-(el-get-bundle anzu)
-(global-anzu-mode)
-;TODO: query-replace を anzu reg に
+(leaf anzu
+  :ensure t
+  :global-minor-mode t
+  :bind
+  ("M-%" . 'anzu-query-replace-regexp))
 
-(global-set-key (kbd "M-%") 'anzu-query-replace-regexp)
+
+
 

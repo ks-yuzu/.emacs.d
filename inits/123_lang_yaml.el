@@ -1,23 +1,22 @@
-(use-package yaml-mode
-  :init (el-get-bundle yaml-mode))
+(leaf yaml-mode
+  :ensure t
+  :mode (("\\.yml\\'" . yaml-mode))
 
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-
-
-
-;; lsp
-
-;; npm install -g yaml-language-server
-(el-get-bundle lsp-yaml)
-(use-package lsp-yaml
-  :init (el-get-bundle iquiw/lsp-yaml)
-  :after lsp
-  ;; :quelpa (lsp-yaml :fetcher github :repo "iquiw/lsp-yaml")
-  :hook (yaml-mode
-         . (lambda ()
-             (setq-local lsp-eldoc-render-all t)
-             (eldoc-mode)))
   :config
-  (add-hook 'yaml-mode-hook #'lsp)
-  (setq lsp-yaml-schemas '(:kubernetes "*.yml")))
+  (leaf yaml-lsp
+    ;; $ npm install -g yaml-language-server
+    :el-get iquiw/lsp-yaml
+    :after lsp
+    :hook
+    ;; (yaml-mode-hook . (lambda ()
+    ;;                (setq-local lsp-eldoc-render-all t)
+    ;;                (eldoc-mode)))
+    (yaml-mode-hook . lsp)
+    :config
+    (setq lsp-yaml-schemas '(:kubernetes "/*.yaml"))))
 
+
+(leaf k8s-mode
+  :ensure t
+  :mode (("\\.patch\\.yaml\\'" . yaml-mode))
+)
