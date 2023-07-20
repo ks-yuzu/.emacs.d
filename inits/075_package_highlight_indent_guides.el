@@ -7,5 +7,6 @@
   (highlight-indent-guides-auto-enabled . t)
   (highlight-indent-guides-responsive   . t)
   (highlight-indent-guides-method       . 'column))
+  ;; (highlight-indent-guides-method       . 'character))
 
 

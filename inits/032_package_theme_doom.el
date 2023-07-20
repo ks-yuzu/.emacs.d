@@ -22,3 +22,7 @@
   ;; (doom-themes-org-config)
   )
 
+(with-eval-after-load 'neotree
+  (doom-themes-neotree-config))
+
+

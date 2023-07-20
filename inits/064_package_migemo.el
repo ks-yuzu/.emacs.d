@@ -1,3 +1,8 @@
+;; for Mac
+;; $ brew install migemo --HEAD
+;; $ sudo ln -s /usr/local/bin/cmigemo /usr/bin/cmigemo
+;; $ sudo ln -s /usr/local/share/migemo /usr/share/cmigemo
+
 ;; sudo apt install cmigemo
 (leaf migemo
   :if (executable-find "cmigemo")
@@ -16,3 +21,4 @@
   :hook
   (after-init-hook . migemo-init)
   )
+
