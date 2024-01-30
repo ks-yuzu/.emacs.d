@@ -39,7 +39,7 @@
 
   :config
   (leaf org-tempo
-    :ensure t)
+    :require t)
 
   (leaf org-bullets
     :ensure t

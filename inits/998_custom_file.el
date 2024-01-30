@@ -13,7 +13,7 @@
  '(system-time-locale "C" t)
  '(css-indent-offset 2)
  '(js-indent-level 2)
- '(typescript-indent-level 2 t))
+ '(typescript-indent-level 2 t)
  '(sgml-basic-offset 2)
  '(doom-themes-enable-bold t)
  '(doom-themes-enable-italic t)
