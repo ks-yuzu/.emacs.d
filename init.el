@@ -40,6 +40,10 @@
                     (scroll-bar-mode 0)))
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+
+;; no title bar on OSX
+;; (set-frame-parameter nil 'undecorated t)
+
 ;; ]-----------------------------------------------------------
 
 ;; -- cursor -------------------------------------------------[
@@ -93,6 +97,8 @@
    (setq exec-path
          (append (list dir) exec-path))))
 
+ ;; -- no beep
+(setq ring-bell-function 'ignore)
 
 
 ;; ======================================================================
@@ -133,3 +139,4 @@
 (profiler-report)
 (profiler-stop)
 ;; ]-----------------------------------------------------------
+

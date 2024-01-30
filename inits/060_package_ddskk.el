@@ -20,6 +20,9 @@
   :config
   (setq skk-large-jisyo (expand-file-name "~/.SKK-JISYO.L.utf8"))
   (setq skk-jisyo       (expand-file-name "~/.skk-jisyo.utf8"))
+  (setq skk-extra-jisyo-file-list
+      (list
+       "~/.SKK-JISYO.lisp"))
 
   :config
   (leaf skk-kutouten

@@ -10,8 +10,19 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    '("1d5e33500bc9548f800f9e248b57d1b2a9ecde79cb40c0b1398dec51ee820daf" "234dbb732ef054b109a9e5ee5b499632c63cc24f7c2383a849815dacc1727cb6" "f7fed1aadf1967523c120c4c82ea48442a51ac65074ba544a5aefc5af490893b" default))
+ '(system-time-locale "C" t)
+ '(css-indent-offset 2)
+ '(js-indent-level 2)
+ '(typescript-indent-level 2 t))
+ '(sgml-basic-offset 2)
  '(doom-themes-enable-bold t)
  '(doom-themes-enable-italic t)
+ '(doom-modeline-icon t t)
+ '(doom-modeline-major-mode-icon nil t)
+ '(doom-modeline-minor-modes nil t)
+ '(highlight-indent-guides-auto-enabled t)
+ '(highlight-indent-guides-method 'column)
+ '(highlight-indent-guides-responsive t)
  '(imenu-list-position 'left t)
  '(imenu-list-size 30 t)
  '(org-display-custom-times t)
@@ -25,6 +36,10 @@
    '(lsp-ui company csharp-mode ox-reveal tldr git-commit plenv))
  '(system-time-locale "C" t)
  '(warning-suppress-types '((comp))))
+
+ ;; '(package-selected-packages
+ ;;   '(ssh-config-mode swift3-mode neotree svelte-mode flycheck-rust company rust-mode web-mode ox-reveal jsonnet-mode org-plus-contrib org-plus-contlib ddskk flymake-yaml groovy-mode k8s-mode typescript-mode multishell multi-term string-inflection org-re-reveal js-doc git-gutter-fringe git-gutter+ git-gutter lsp-yaml helm-lsp highlight-indent-guides tldr git-commit plenv))
+
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

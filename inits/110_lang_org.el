@@ -36,7 +36,11 @@
   (org-level-7 . '((nil (                   :bold nil :height 1.0))))
   (org-level-8 . '((nil (                   :bold nil :height 1.0))))
 
+
   :config
+  (leaf org-tempo
+    :ensure t)
+
   (leaf org-bullets
     :ensure t
     :hook
@@ -121,6 +125,7 @@
  [NO-DEFAULT-PACKAGES]
  [PACKAGES]
  [EXTRA]"
+
                             ("\\chapter{%s}" . "\\chapter*{%s}")
                             ("\\section{%s}" . "\\section*{%s}")
                             ("\\subsection{%s}" . "\\subsection*{%s}")
@@ -130,3 +135,8 @@
                            ))
     )
   )
+
+
+;; (use-package org-plus-contlib
+;;   :ensure)
+;; (use-package ox-confluence)
