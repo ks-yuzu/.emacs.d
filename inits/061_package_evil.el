@@ -45,14 +45,16 @@
          (evil-insert-state-map ("\C-k" . kill-line))
          ;; (evil-visual-state-map ("\C-k" . kill-line))
          (evil-insert-state-map ("\C-v" . evil-scroll-down))
-         (evil-insert-state-map ("\M-v" . evil-scroll-up)))
+         (evil-insert-state-map ("\M-v" . evil-scroll-up))
+         (evil-normal-state-map ("Z Z"  . save-buffers-kill-terminal))
+         )
 
   :config
   (blink-cursor-mode -1)
-  (if (evil-mode)
-      (progn
-        (bind-keys :map evil-normal-state-map
-                   ("Z Z" . save-buffers-kill-terminal))))
+  ;; (if (evil-mode)
+  ;;     (progn
+  ;;       (bind-keys :map evil-normal-state-map
+  ;;                  ("Z Z" . save-buffers-kill-terminal))))
   (evil-ex-define-cmd "q"  #'kill-this-buffer)
   (evil-ex-define-cmd "wq" #'(lambda()
                                (interactive)
