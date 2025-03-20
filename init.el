@@ -56,7 +56,7 @@
 (setq inhibit-startup-message t)
 ;; ]-----------------------------------------------------------
 
-;; -- backup and autosave ------------------------------------[
+;; -- backup, autosave and lockfile --------------------------[
 (setq make-backup-files t)
 (add-to-list 'backup-directory-alist         ; backup~
        (cons "\\.*$" (expand-file-name "~/.emacs.d/backup/")))
