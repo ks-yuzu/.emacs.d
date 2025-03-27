@@ -1,23 +1,26 @@
-;; (if (eq system-type 'gnu/linux)
-(if (member "Ricty" (font-family-list))
-    (progn
-      (set-face-attribute 'default nil :family "Ricty" :height 135)
-      (set-fontset-font (frame-parameter nil 'font)
-                        'japanese-jisx0208
-                        (font-spec :family "Ricty"))
-      ;; (add-to-list 'face-font-rescale-alist
-      ;;              '(".*Ricty.*" . 1))
-))
+(leaf *font
+  :preface
+  (defun _set-font (font-name font-size)
+    (if (member font-name (font-family-list))
+        (progn
+          (set-face-attribute 'default nil :family font-name :height font-size)
+          (set-fontset-font (frame-parameter nil 'font)
+                            'japanese-jisx0208
+                            (font-spec :family font-name))
+          ;; (add-to-list 'face-font-rescale-alist
+          ;;              (cons (format ".*%s.*" font-name) 1))
+          )))
 
-(if (member "Cica" (font-family-list))
-    (progn
-      (set-face-attribute 'default nil :family "Cica" :height 135)
-      (set-fontset-font (frame-parameter nil 'font)
-                        'japanese-jisx0208
-                        (font-spec :family "Cica"))
-      ;; (add-to-list 'face-font-rescale-alist
-      ;;              '(".*Cica.*" . 1))
-))
+  (defun set-font (frame)
+    (select-frame frame)
+    (_set-font "Ricty" 135)
+    (_set-font "Cica" 150))
+
+  :config
+  (set-font (selected-frame))
+  (add-hook 'after-make-frame-functions 'set-font)
+  )
+
 
 ;; ;; (if (eq system-type 'windows-nt)
 ;; (if (eq system-type 'cygwin)

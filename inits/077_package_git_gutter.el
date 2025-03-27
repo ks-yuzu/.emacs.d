@@ -1,6 +1,6 @@
-(leaf git-gutter-fringe
+(leaf git-gutter-fringe+
   :ensure t
-  ;; :global-minor-mode global-git-gutter-mode
+  :global-minor-mode global-git-gutter+-mode
   ;; :config
-  ;; (global-git-gutter-mode t)
+  ;; (global-git-gutter+-mode t)
   )
