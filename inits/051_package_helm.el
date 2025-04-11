@@ -67,6 +67,7 @@
     :ensure t
     :leaf-defer nil
     :bind
+    ("C-x C-r" . consult-recent-file)
     ("C-x b"   . consult-buffer)              ;; switch-to-buffer
     ("C-x 4 b" . consult-buffer-other-window) ;; switch-to-buffer-other-window
     ("C-x 5 b" . consult-buffer-other-frame)  ;; switch-to-buffer-other-frame
