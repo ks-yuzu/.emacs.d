@@ -33,19 +33,6 @@
       ;; system-name : ホスト名
 ;; ]-----------------------------------------------------------
 
-;; -- bars ---------------------------------------------------[
-(menu-bar-mode 0)
-(if window-system (progn
-                    (tool-bar-mode 0)
-                    (scroll-bar-mode 0)))
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-
-;; no title bar on OSX
-;; (set-frame-parameter nil 'undecorated t)
-
-;; ]-----------------------------------------------------------
-
 ;; -- cursor -------------------------------------------------[
 (set-cursor-color "orange")
 (setq cursor-type 'box)
